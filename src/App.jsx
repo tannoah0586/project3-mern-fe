@@ -7,15 +7,16 @@ import * as ideaService from './services/ideaService';
 const App =()=> {
   const [ideas,useIdeas] = useState([]);
   const { user } = useContext(userContext) ;
-  useEffect(()=> {
-    const fetchAllIdeas = async ()=> {
-      const ideasData = await ideaService.index();
-      console.log('ideasData:', ideasData);
-    };
-    if (user) fetchAllIdeas();
-  }, [user]);
 
-  return (
+  useEffect(()=> {
+    const fetchAllIdeas = async () => {
+      const ideasData = await ideaService.index();
+      setIdeas(ideasData);
+    }
+    if (user) fetchAllIdeas();
+  },[user]);
+
+  return(
     <>
       <NavBar />
       <Routes>
@@ -33,5 +34,4 @@ const App =()=> {
       </Routes>
     </>
   )};
-
-export default App
+export default App;
