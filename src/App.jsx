@@ -1,6 +1,7 @@
 import IdeaList from "./components/IdeaList/IdeaList";
 import { useContext, useState, useEffect } from 'react';
 import * as ideaService from './services/ideaService';
+import NavBar from "./components/NavBar/NavBar";
 
 const App = () => {
   const [ideas,setIdeas] = useState([]);
