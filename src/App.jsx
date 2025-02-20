@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useContext, useState, useEffect } from 'react';
+import IdeaList from './components/IdeaList/IdeaList'
+import NavBar from './components/NavBar/NavBar'
 import './App.css'
+import * as ideaService from './services/ideaService';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App =()=> {
+  const [ideas,useIdeas] = useState([]);
+  const { user } = useContext(userContext) ;
+  useEffect(()=> {
+    const fetchAllIdeas = async ()=> {
+      const ideasData = await ideaService.index();
+      console.log('ideasData:', ideasData);
+    };
+    if (user) fetchAllIdeas();
+  }, [user]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NavBar />
+      <Routes>
+        <Route path='/' element= {user ? <Dashboard /> : <Landing />}/>
+        {user? (
+          <>
+            <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
+          </>
+        ) : (
+          <>
+            <Route path ='/sign-in' element = {<SignInForm />}/>
+            <Route path ='/sign-up' element = {<SignUpForm />}/>
+          </>
+        )}
+      </Routes>
     </>
-  )
-}
+  )};
 
 export default App
