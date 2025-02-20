@@ -15,12 +15,12 @@ Comments model
 * Post Deletion (by author): Users can delete their own posts.
 
 # UserStories 
-As a user I would like to sign up 
-as a user I would like to log in securely
-as a user I would like to post comments under my name
-as a user I would like to edit or delete my comments
-as a user I would like to like other comments 
-as a user I would like to see the top liked comment float to the top of the page (stretched goal)
+As a user I would like to sign up and create an account
+as a user I would like to log in securely 
+as a user I would like to post Ideas under my name
+as a user I would like to edit or delete my Idea
+as a user I would like to like other Ideas 
+as a user I would like to see the top liked Idea float to the top of the page (stretched goal)
 
 
 # MVP

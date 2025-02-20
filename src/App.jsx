@@ -1,12 +1,12 @@
-import IdeaList from "./components/IdeaList/IdeaList";
 import { useContext, useState, useEffect } from 'react';
+import IdeaList from './components/IdeaList/IdeaList'
+import NavBar from './components/NavBar/NavBar'
+import './App.css'
 import * as ideaService from './services/ideaService';
-import NavBar from "./components/NavBar/NavBar";
 
-const App = () => {
-  const [ideas,setIdeas] = useState([]);
-  const { user } = useContext(UserContext);
-  
+const App =()=> {
+  const [ideas,useIdeas] = useState([]);
+  const { user } = useContext(userContext) ;
 
   useEffect(()=> {
     const fetchAllIdeas = async () => {
@@ -16,25 +16,22 @@ const App = () => {
     if (user) fetchAllIdeas();
   },[user]);
 
-
   return(
     <>
-    <NavBar/>
-    <Routes>
-      <Route path='/' element={user ? <Dashboard /> : <Landing />} />
-      {user ? (
-        <>
-          <Route path='/ideas' element={<IdeaList />} />
-        </>
-      ) : (
-        <>
-          <Route path='/sign-up' element={<SignUpForm />} />
-          <Route path='/sign-in' element={<SignInForm />} />
-        </>
-      )}
-    </Routes>
-  </>
-  )
-}
-
+      <NavBar />
+      <Routes>
+        <Route path='/' element= {user ? <Dashboard /> : <Landing />}/>
+        {user? (
+          <>
+            <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
+          </>
+        ) : (
+          <>
+            <Route path ='/sign-in' element = {<SignInForm />}/>
+            <Route path ='/sign-up' element = {<SignUpForm />}/>
+          </>
+        )}
+      </Routes>
+    </>
+  )};
 export default App;
