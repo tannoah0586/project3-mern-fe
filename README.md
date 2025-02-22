@@ -32,10 +32,3 @@ as a user I would like to see the top liked Idea float to the top of the page (s
 Figure the Schema out settle the MVP and APIs by Saturday
 
 # Brainstorming
-
-- Store likes under the idea database i.e. store the array of users that have liked the idea
-- Instead of creating another schema, for just likes alone, adding another field in ideaSchema would make sense —>  store an array of the users that have liked the idea 
-- But have to make sure the users are not allowed to vote more than once per idea
-- useState to keep track of the likes in my component
-- useEffect to fetch the initial likes from my mongoDB when the component mounts
-- A handleLike function to update the likes in the state and send a request to backend to update mongoDB
