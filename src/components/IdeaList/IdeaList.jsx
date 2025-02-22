@@ -1,4 +1,24 @@
+import { Link } from 'react-router'
+
 const IdeaList = (props) => {
-    return <main>Idea List</main>
+    return (
+
+        <main>
+            {props.ideas.map((idea)=>(
+                <Link key={idea._id} to={`/ideas/${idea._id}`}>
+                    <article>
+                        <header>
+                            <h2>{idea.title}</h2>
+                            <p>
+                            {`${idea.author === null ? 'Anonymous' : idea.author.username} posted on 
+                            ${new Date(idea.createdAt).toLocaleDateString()}`}
+                            </p>
+                        </header>
+                        <p>{idea.text}</p>
+                    </article>
+                </Link>
+            ))};
+        </main>
+    );
 };
 export default IdeaList;
