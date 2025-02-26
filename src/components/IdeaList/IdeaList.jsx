@@ -13,6 +13,9 @@ const IdeaList = (props) => {
                             {`${idea.author === null ? 'Anonymous' : idea.author.username} posted on 
                             ${new Date(idea.createdAt).toLocaleDateString()}`}
                             </p>
+                            <p>
+                                Number of Comments: {idea.comments.length};
+                             </p>
                         </header>
                         <p>{idea.text}</p>
                     </article>

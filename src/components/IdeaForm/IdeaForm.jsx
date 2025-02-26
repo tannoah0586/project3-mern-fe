@@ -8,7 +8,7 @@ const IdeaForm = (props) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    anonymity: 'non-anonymous',
+    anonymity: 'Non-Anonymous',
   });
 
   const handleChange = (evt) => {
@@ -49,10 +49,10 @@ const IdeaForm = (props) => {
         <label htmlFor='description-input'>Description</label>
         <textarea
           required
-          type='description'
+          type='text'
           name='description'
           id='description-input'
-          value={formData.text}
+          value={formData.description}
           onChange={handleChange}
         />
         <label htmlFor='anonymity-input'>Anonymity</label>
@@ -63,8 +63,8 @@ const IdeaForm = (props) => {
           value={formData.anonymity}
           onChange={handleChange}
         >
-          <option value='non-anonymous'>Non-Anonymous</option>
-          <option value='anonymous'>Anonymous</option>
+          <option value='Non-Anonymous'>Non-Anonymous</option>
+          <option value='Anonymous'>Anonymous</option>
         </select>
         <button type='submit'>SUBMIT</button>
       </form>
