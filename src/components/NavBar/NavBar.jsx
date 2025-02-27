@@ -6,6 +6,7 @@ const NavBar =()=> {
           <ul>
             <li><Link to='/'>HOME</Link></li>
             <li><Link to='/ideas'>IDEAS</Link></li>
+            <li><Link to ='/ideas/new'>NEW IDEA</Link></li>
             <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
           </ul>
         ) : (
