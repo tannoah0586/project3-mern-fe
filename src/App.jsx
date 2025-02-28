@@ -6,6 +6,7 @@ import * as ideaService from './services/ideaService';
 import IdeaDetails from './components/IdeaDetails/IdeaDetails';
 import IdeaForm from './components/IdeaForm/IdeaForm';
 import { Routes, Route, useNavigate } from 'react-router';
+import Landing from './components/Landing/Landing';
 
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
@@ -42,14 +43,14 @@ const App =()=> {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element= {user ? <Dashboard /> : <Landing />}/>
+        <Route path='/' element= {<Landing />}/>
         {user? (
           <>
             <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
             <Route path='ideas/:ideasId' element ={<IdeaList ideas={ideas}/>}/>
             <Route path='/ideas/new' element = {<IdeaForm handleAddIdea ={handleAddIdea} />}/>
             <Route 
-              path='/hoots/:ideaId'
+              path='/ideas/:ideaId'
               element={<IdeaDetails handleDeleteIdea={handleDeleteIdea}/>}  
             />
             <Route

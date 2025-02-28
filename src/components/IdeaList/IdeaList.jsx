@@ -15,6 +15,7 @@ const IdeaList = (props) => {
                             </p>
                             <p>
                                 Number of Comments: {idea.comments.length};
+                                Number of Likes: {idea.likes.length};
                              </p>
                         </header>
                         <p>{idea.text}</p>
