@@ -3,6 +3,7 @@ import * as ideaService from '../../services/ideaService'
 import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
 import { useParams, Link } from 'react-router';
+import LikeForm from '../Likeform/LikeForm';
 
 const IdeaDetails = (props) => {
     const [idea,setIdea] = useState(null);
@@ -32,12 +33,13 @@ const IdeaDetails = (props) => {
       <section>
         <header>
           {/* <p>{idea.category.toUpperCase()}</p> */}
-          <h1>{idea.title}</h1>
+          <h1>{idea.title.toUpperCase()}</h1>
+          <h2>{idea.description}</h2>
           <p>
             {`${idea.author === null ? 'Anonymous' : idea.author.username} posted on 
               ${new Date(idea.createdAt).toLocaleDateString()}`}
           </p>
-          {idea.author._id === user._id && (
+          {idea.originalAuthorId && idea.author._id === user._id && (
               <>
                 <Link to={`/ideas/${ideaId}/edit`}>Edit</Link>
                 <button onClick={()=> props.handleDeleteIdea(ideaId)}>
@@ -46,6 +48,10 @@ const IdeaDetails = (props) => {
               </>
             )}
         </header>
+        <section>
+          <h2>Likes</h2>
+          <LikeForm />
+        </section>
         <p>{idea.text}</p>
       </section>
       <section>

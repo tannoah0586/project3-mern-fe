@@ -85,9 +85,21 @@ async function update(ideaId, ideaFormData) {
     }
   }
   
-
-
-
+const createLike = async(ideaId, likeFormData )=> {
+  try {
+    const res = await fetch(`${BASE_URL}/${hootId}/likes`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(likeFormData),
+  });
+  return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export {
     index,
@@ -96,4 +108,5 @@ export {
     createComment,
     deleteIdea,
     update,
+    createLike
 }
