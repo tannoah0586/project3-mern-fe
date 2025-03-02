@@ -1,14 +1,14 @@
 const Landing = () => {
   return (
     <>
-      <main className={styles.container}>
-        <section className={styles.splash}>
-          <img src={Logotype} alt='Company Feedback & Idea Collaboration App' />
+      <main >
+        <section >
+          <img alt='Company Feedback & Idea Collaboration App' />
           <h1>Collaborate & Innovate with Difference</h1>
           <p>Transform your company's feedback and idea generation with our intuitive platform.</p>
         </section>
 
-        <section className={styles.about}>
+        <section>
           <header>
             <h3>ABOUT OUR PLATFORM</h3>
             <h1>Unleash Collective Intelligence</h1>
@@ -23,7 +23,7 @@ const Landing = () => {
           </article>
         </section>
 
-        <section className={styles.features}>
+        <section >
           <header>
             <h3>KEY FEATURES</h3>
             <h1>Why Choose Idea?</h1>
@@ -39,7 +39,7 @@ const Landing = () => {
           </article>
         </section>
 
-        <section className={styles.testimonial}>
+        <section >
           <header>
             <h3>WHAT OUR USERS SAY</h3>
             <h1>TESTIMONIALS</h1>
@@ -53,7 +53,7 @@ const Landing = () => {
               Idea has revolutionized how we collect and process feedback. The ability to anonymously share ideas has significantly increased participation and brought forward valuable insights we wouldn't have otherwise captured.
             </p>
             <footer>
-              <img src={Stars} alt='Five gold stars' />
+              <img  alt='Five gold stars' />
             </footer>
           </article>
 
@@ -66,13 +66,13 @@ const Landing = () => {
               The collaborative discussions and voting features have streamlined our idea prioritization process. Idea has become an essential tool for driving innovation within our team.
             </p>
             <footer>
-              <img src={Stars} alt='Five gold stars' />
+              <img  alt='Five gold stars' />
             </footer>
           </article>
 
         </section>
 
-        <section className={styles.cta}>
+        <section >
           <header>
             <h1>Ready to Transform Your Company's Feedback?</h1>
           </header>
@@ -84,7 +84,7 @@ const Landing = () => {
 
       </main>
 
-      <footer className={styles.footer}>
+      <footer >
         © 2025 Idea INC. ALL RIGHTS RESERVED.
       </footer>
     </>

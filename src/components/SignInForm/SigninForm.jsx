@@ -1,13 +1,13 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 
-import { signIn } from '../../services/authService';
+import { signIn } from '../../services/authServices';
 
 import { UserContext } from '../../contexts/UserContext';
 
-import LoginIcon from '../../assets/images/login.svg';
+// import LoginIcon from '../../assets/images/login.svg';
 
-import styles from './SignInForm.module.css';
+// import styles from './SignInForm.module.css';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -35,9 +35,9 @@ const SignInForm = () => {
   };
 
   return (
-    <main className={styles.container}>
+    <main >
       <section>
-      <img src={LoginIcon} alt='to be decided' />
+      <img alt='to be decided' />
       </section>
       <section>
       <form autoComplete='off' onSubmit={handleSubmit}>

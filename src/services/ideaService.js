@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_EN_SERVER_URL}/ideas`;
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/ideas`;
 
 const index = async () => {
     try {
@@ -24,6 +24,9 @@ const show = async(ideaId) => {
 
 const create = async(ideaFormData) => {
 try {
+
+  console.log("BASE_URL in create:", BASE_URL); // Log BASE_URL
+  console.log("ideaFormData in create:", ideaFormData); // Log ideaFormData
     const res = await fetch(BASE_URL, {
         method: 'POST',
         headers: {
@@ -87,7 +90,7 @@ async function update(ideaId, ideaFormData) {
   
 const createLike = async(ideaId, likeFormData )=> {
   try {
-    const res = await fetch(`${BASE_URL}/${hootId}/likes`, {
+    const res = await fetch(`${BASE_URL}/${ideaId}/likes`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

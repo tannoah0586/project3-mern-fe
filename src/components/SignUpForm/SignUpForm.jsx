@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 
-import { signUp } from '../../services/authService';
+import { signUp } from '../../services/authServices';
 
 import { UserContext } from '../../contexts/UserContext';
 
@@ -42,9 +42,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <main className={styles.container}>
+    <main >
     <section>
-    <img src={signUpIcon} alt='An owl sitting on a sign' />
+    <img  alt='An owl sitting on a sign' />
     </section>
       <section>
       <form onSubmit={handleSubmit}>

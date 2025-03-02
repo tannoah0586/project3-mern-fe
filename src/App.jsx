@@ -7,11 +7,14 @@ import IdeaDetails from './components/IdeaDetails/IdeaDetails';
 import IdeaForm from './components/IdeaForm/IdeaForm';
 import { Routes, Route, useNavigate } from 'react-router';
 import Landing from './components/Landing/Landing';
+import SignInForm from './components/SignInForm/SigninForm';
+import { UserContext } from './contexts/UserContext';
+import SignUpForm from './components/SignUpForm/SignUpForm';
 
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
   const navigate = useNavigate();
-  const { user } = useContext(userContext) ;
+  const { user } = useContext(UserContext) ;
 
   useEffect(()=> {
     const fetchAllIdeas = async () => {
@@ -44,10 +47,11 @@ const App =()=> {
       <NavBar />
       <Routes>
         <Route path='/' element= {<Landing />}/>
-        {user? (
+        {user? ( 
           <>
+          {/* protected routes */}
             <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
-            <Route path='ideas/:ideasId' element ={<IdeaList ideas={ideas}/>}/>
+            <Route path='ideas/:ideaId' element ={<IdeaList ideas={ideas}/>}/>
             <Route path='/ideas/new' element = {<IdeaForm handleAddIdea ={handleAddIdea} />}/>
             <Route 
               path='/ideas/:ideaId'

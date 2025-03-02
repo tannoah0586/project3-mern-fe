@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react';
 import { useParams } from 'react-router';
-import * as hootService from '../../services/hootService';
+import * as ideaService from '../../services/ideaService';
 
 
 const IdeaForm = (props) => {
@@ -18,9 +18,10 @@ const IdeaForm = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (ideaId) {
-        props.handleUpdateHoot(ideaId, formData);
+      console.log("Form Data before update:", formData)
+        props.handleUpdateIdea(ideaId, formData);
       } else {
-        props.handleAddHoot(formData);
+        props.handleAddIdea(formData);
       }
   };
 
