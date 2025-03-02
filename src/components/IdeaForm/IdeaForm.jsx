@@ -31,7 +31,7 @@ const IdeaForm = (props) => {
       setFormData(ideaData);
     };
     if (ideaId) fetchIdea();
-    return () => setFormData({ title: '', text: '', category: 'News' });
+    return () => setFormData({ title: '', description: '', anonymity: 'Non-Anonymous' });
   }, [ideaId]);
 
   return (

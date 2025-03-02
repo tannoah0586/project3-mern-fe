@@ -51,12 +51,8 @@ const App =()=> {
           <>
           {/* protected routes */}
             <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
-            <Route path='ideas/:ideaId' element ={<IdeaList ideas={ideas}/>}/>
+            <Route path='ideas/:ideaId' element ={<IdeaDetails handleDeleteIdea = {handleDeleteIdea} />}/>
             <Route path='/ideas/new' element = {<IdeaForm handleAddIdea ={handleAddIdea} />}/>
-            <Route 
-              path='/ideas/:ideaId'
-              element={<IdeaDetails handleDeleteIdea={handleDeleteIdea}/>}  
-            />
             <Route
               path='/ideas/:ideaId/edit'
               element={<IdeaForm handleUpdateIdea={handleUpdateIdea}/>}

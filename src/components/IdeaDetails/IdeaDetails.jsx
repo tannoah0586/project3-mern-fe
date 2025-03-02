@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as ideaService from '../../services/ideaService'
 import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
@@ -9,23 +9,32 @@ const IdeaDetails = (props) => {
     const [idea,setIdea] = useState(null);
     const { ideaId } = useParams();
     const { user } = useContext(UserContext);
-    console.log('ideaId', ideaId);
+    // console.log('ideaId', ideaId);
 
     const handleAddComment = async (commentFormData) => {
         const newComment = await ideaService.createComment(ideaId, commentFormData);
         setIdea({ ...idea, comments: [...idea.comments, newComment] });
       };
+
+  const handleDeleteComment = async (commentId) => {
+    console.log('commentId:', commentId);
+    const deletedComment = await ideaService.deleteComment(ideaId,commentId);
+    setIdea({
+      ...idea,
+      comments: idea.comments.filter((comment) => comment._id !== commentId),
+    });
+  };
     
     useEffect(()=> {
         const fetchIdea = async () => {
             const ideaData = await ideaService.show(ideaId);
             setIdea(ideaData);
+            console.log("idea.originalAuthorId:", ideaData.originalAuthorId);
         };
         fetchIdea();
     }, [ideaId])
 
-    console.log('idea state:', idea);
-
+    // console.log('idea state:', idea);
 
     if (!idea) return <main>Loading...</main>;
   return (
@@ -62,10 +71,20 @@ const IdeaDetails = (props) => {
             {idea.comments.map((comment) => (
             <article key={comment._id}>
                 <header>
-                <p>
-                    {`${comment.author.username} posted on
-                    ${new Date(comment.createdAt).toLocaleDateString()}`}
-                </p>
+                <div>
+              <p>
+                {`${comment.author === null ? 'Anonymous' : comment.author.username} posted on
+                ${new Date(comment.createdAt).toLocaleDateString()}`}
+              </p>
+              {idea.originalAuthorId && idea.originalAuthorId._id === user._id && (
+              <>
+                <Link to={`/ideas/${ideaId}/edit`}>Edit Comment</Link>
+                <button onClick={() => handleDeleteComment(comment._id)}>
+                    Delete Comment
+                </button>
+              </>
+            )}
+            </div>
                 </header>
                 <p>{comment.text}</p>
             </article>
