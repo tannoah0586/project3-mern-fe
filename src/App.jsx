@@ -10,6 +10,7 @@ import Landing from './components/Landing/Landing';
 import SignInForm from './components/SignInForm/SigninForm';
 import { UserContext } from './contexts/UserContext';
 import SignUpForm from './components/SignUpForm/SignUpForm';
+import Dashboard from './components/Dashboard/Dashboard';
 
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
@@ -46,7 +47,7 @@ const App =()=> {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element= {<Landing />}/>
+        <Route path='/' element= {user ? <Dashboard /> :<Landing />}/>
         {user? ( 
           <>
           {/* protected routes */}
