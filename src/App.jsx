@@ -11,6 +11,7 @@ import SignInForm from './components/SignInForm/SigninForm';
 import { UserContext } from './contexts/UserContext';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import Dashboard from './components/Dashboard/Dashboard';
+import CommentForm from './components/CommentForm/CommentForm';
 
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
@@ -58,6 +59,10 @@ const App =()=> {
               path='/ideas/:ideaId/edit'
               element={<IdeaForm handleUpdateIdea={handleUpdateIdea}/>}
               />
+             <Route 
+              path='/ideas/:ideaId/comments/:commentId/edit'
+              element={<CommentForm />}
+             /> 
           </>
         ) : (
           <>

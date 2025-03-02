@@ -57,6 +57,22 @@ const createComment = async (ideaId, commentFormData) => {
   }
 };
 
+const deleteComment = async (ideaId, commentId) => {
+  try {
+      const res = await fetch(`${BASE_URL}/${ideaId}/comments/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+      });
+      return res.json();
+  } catch (error) {
+      console.error('Error deleting comment:', error);
+      throw error;
+  }
+};
+
+
 const deleteIdea = async (ideaId) => {
   try {
     const res = await fetch(`${BASE_URL}/${ideaId}`, {
@@ -80,7 +96,7 @@ async function update(ideaId, ideaFormData) {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(hootFormData),
+        body: JSON.stringify(ideaFormData),
       });
       return res.json();
     } catch (error) {
@@ -88,15 +104,15 @@ async function update(ideaId, ideaFormData) {
     }
   }
   
-const createLike = async(ideaId, likeFormData )=> {
+const createReaction = async(ideaId, reactionFormData )=> {
   try {
-    const res = await fetch(`${BASE_URL}/${ideaId}/likes`, {
+    const res = await fetch(`${BASE_URL}/${ideaId}/reactions`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(likeFormData),
+      body: JSON.stringify(reactionFormData),
   });
   return res.json();
   } catch (error) {
@@ -104,12 +120,31 @@ const createLike = async(ideaId, likeFormData )=> {
   }
 };
 
+const updateComment = async (ideaId, commentId, commentFormData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${ideaId}/comments/${commentId}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(commentFormData),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export {
     index,
     show,
     create,
     createComment,
+    deleteComment,
     deleteIdea,
     update,
-    createLike
+    createReaction,
+    updateComment
 }

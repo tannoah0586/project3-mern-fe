@@ -3,9 +3,9 @@ import * as ideaService from '../../services/ideaService';
 import { useParams, useNavigate } from 'react-router';
 
 
-const LikeForm = () => {
+const ReactionForm = () => {
     const [formData, setFormData] = useState({
-        like: "Like", //default setting
+        type: "Like", //default setting
     })
 
     const navigate = useNavigate();
@@ -18,18 +18,18 @@ const LikeForm = () => {
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        ideaService.createLike(ideaId,formData); //create likes/dislikes
+        ideaService.createReaction(ideaId,formData); //create likes/dislikes
         navigate(`/ideas/${ideaId}`);
 }
 
 return (
  <form onSubmit={handleSubmit}>
-        <label htmlFor='like-input'>Like / Dislike: </label>
+        <label htmlFor='reaction-input'>Like / Dislike: </label>
         <select
           required
-          name='like'
-          id='like-input'
-          value={formData.like}
+          name='type'
+          id='reaction-input'
+          value={formData.type}
           onChange={handleChange}
         >
           <option value='Like'>Like</option>
@@ -40,4 +40,4 @@ return (
 )};
 
 
-export default LikeForm;
+export default ReactionForm;

@@ -1,28 +1,36 @@
-import { Link } from 'react-router'
+// IdeaList.jsx
+import { Link } from 'react-router-dom';
 
-const IdeaList = (props) => {
+const IdeaList = ({ ideas }) => {
     return (
-
         <main>
-            {props.ideas.map((idea)=>(
-                <Link key={idea._id} to={`/ideas/${idea._id}`}>
-                    <article>
+            <h1>Ideas</h1>
+            {ideas.map((idea) => {
+                // Calculate like and dislike counts
+                const likesCount = idea.reactions.filter((reaction) => reaction.type === 'Like').length;
+                const dislikesCount = idea.reactions.filter((reaction) => reaction.type === 'Dislike').length;
+
+                return (
+                    <article key={idea._id}>
                         <header>
-                            <h2>{idea.title}</h2>
+                            <Link to={`/ideas/${idea._id}`}>
+                                <h2>{idea.title}</h2>
+                            </Link>
                             <p>
-                            {`${idea.author === null ? 'Anonymous' : idea.author.username} posted on 
-                            ${new Date(idea.createdAt).toLocaleDateString()}`}
+                                {idea.author ? idea.author.username : 'Anonymous'} posted on{' '}
+                                {new Date(idea.createdAt).toLocaleDateString()}
                             </p>
-                            <p>
-                                Number of Comments: {idea.comments.length};
-                                Number of Likes: {idea.likes.length};
-                             </p>
                         </header>
                         <p>{idea.text}</p>
+                        <div>
+                            <p>Likes: {likesCount}</p>
+                            <p>Dislikes: {dislikesCount}</p>
+                        </div>
                     </article>
-                </Link>
-            ))}
+                );
+            })}
         </main>
     );
 };
+
 export default IdeaList;

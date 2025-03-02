@@ -3,13 +3,14 @@ import * as ideaService from '../../services/ideaService'
 import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
 import { useParams, Link } from 'react-router';
-import LikeForm from '../Likeform/LikeForm';
+import ReactionForm from '../ReactionForm/ReactionForm';
 
 const IdeaDetails = (props) => {
     const [idea,setIdea] = useState(null);
     const { ideaId } = useParams();
     const { user } = useContext(UserContext);
     // console.log('ideaId', ideaId);
+
 
     const handleAddComment = async (commentFormData) => {
         const newComment = await ideaService.createComment(ideaId, commentFormData);
@@ -37,11 +38,11 @@ const IdeaDetails = (props) => {
     // console.log('idea state:', idea);
 
     if (!idea) return <main>Loading...</main>;
+    
   return (
     <main>
       <section>
         <header>
-          {/* <p>{idea.category.toUpperCase()}</p> */}
           <h1>{idea.title.toUpperCase()}</h1>
           <h2>{idea.description}</h2>
           <p>
@@ -58,14 +59,14 @@ const IdeaDetails = (props) => {
             )}
         </header>
         <section>
-          <h2>Likes</h2>
-          <LikeForm />
+          <h2>Reactions </h2>
+          <ReactionForm />
         </section>
         <p>{idea.text}</p>
       </section>
       <section>
       <h2>Comments</h2>
-        <CommentForm handleAddComment = {handleAddComment}/>
+        <CommentForm handleAddComment={handleAddComment}/>
             {!idea.comments.length && <p>There are no comments.</p>}
 
             {idea.comments.map((comment) => (
@@ -78,7 +79,7 @@ const IdeaDetails = (props) => {
               </p>
               {idea.originalAuthorId && idea.originalAuthorId._id === user._id && (
               <>
-                <Link to={`/ideas/${ideaId}/edit`}>Edit Comment</Link>
+                <Link to={`/ideas/${ideaId}/comments/${comment._id}/edit`}>Edit Comment</Link>
                 <button onClick={() => handleDeleteComment(comment._id)}>
                     Delete Comment
                 </button>
