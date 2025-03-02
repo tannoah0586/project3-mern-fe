@@ -21,7 +21,7 @@ const IdeaList = (props) => {
                         <p>{idea.text}</p>
                     </article>
                 </Link>
-            ))};
+            ))}
         </main>
     );
 };

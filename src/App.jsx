@@ -14,7 +14,7 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
   const navigate = useNavigate();
-  const { user } = useContext(UserContext) ;
+  const { user } = useContext(UserContext);
 
   useEffect(()=> {
     const fetchAllIdeas = async () => {

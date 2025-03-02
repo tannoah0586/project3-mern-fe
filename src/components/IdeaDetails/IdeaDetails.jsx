@@ -48,7 +48,7 @@ const IdeaDetails = (props) => {
             {`${idea.author === null ? 'Anonymous' : idea.author.username} posted on 
               ${new Date(idea.createdAt).toLocaleDateString()}`}
           </p>
-          {idea.originalAuthorId && idea.author._id === user._id && (
+          {idea.originalAuthorId && idea.originalAuthorId._id === user._id && (
               <>
                 <Link to={`/ideas/${ideaId}/edit`}>Edit</Link>
                 <button onClick={()=> props.handleDeleteIdea(ideaId)}>
