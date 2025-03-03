@@ -48,7 +48,7 @@ const App =()=> {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element= {user ? <Dashboard /> :<Landing />}/>
+        <Route path='/' element= {user ? <Dashboard ideas={ideas}/> :<Landing />}/>
         {user? ( 
           <>
           {/* protected routes */}
