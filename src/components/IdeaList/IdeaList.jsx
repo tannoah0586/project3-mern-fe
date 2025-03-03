@@ -25,6 +25,7 @@ const IdeaList = ({ ideas }) => {
                         <div>
                             <p>Likes: {likesCount}</p>
                             <p>Dislikes: {dislikesCount}</p>
+                            <p>Number of Comments: {idea.comments.length}</p>
                         </div>
                     </article>
                 );
