@@ -4,35 +4,42 @@ import { UserContext } from '../../contexts/UserContext';
 
 import * as userService from '../../services/userService';
 
-const Dashboard = () => {
+const Dashboard = ({ ideas }) => {
   const { user } = useContext(UserContext);
-  const [ users, setUsers ] = useState([]);
+  // const [ likesCount, setlikesCount ] = useState([]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const fetchedUsers = await userService.index();
-        setUsers(fetchedUsers);
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    if (user) fetchUsers();
-  }, [user]);
+
+
+  const likedIdeas = ideas.filter((idea) => idea.reactions.type === "Like")
+  console.log(likedIdeas)
 
   return (
     <main>
       <h1>Welcome, {user.username}</h1>
       <p>
-        This is the dashboard page where you can see a list of all the users.
+        This is the dashboard page where you can see a list of all ideas.
       </p>
       <ul>
-        {users.map(user => (
-          <li key={user._id}>{user.username}</li>
-        ))}
+        {ideas
+          .map(idea => ({
+            ...idea,
+            likesCount: idea.reactions.filter(reaction => reaction.type === "Like").length
+          }))
+          .sort((a, b) => b.likesCount - a.likesCount) // Sort by likes count descending
+          .map((idea) => {
+            return (
+              <li key={idea._id}>
+                {idea.title} - {idea.likesCount} likes
+              </li>
+            );
+          })}
       </ul>
     </main>
+
+    
   );
+
+  
 };
 
 export default Dashboard;
