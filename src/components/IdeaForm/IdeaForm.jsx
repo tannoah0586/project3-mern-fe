@@ -47,7 +47,7 @@ const IdeaForm = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="category-input">Anonymity</label>
+        <label htmlFor="category-input">Category</label>
         <select
           required
           name="category"
