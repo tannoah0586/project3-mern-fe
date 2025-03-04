@@ -19,7 +19,7 @@ const ReactionForm = () => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         ideaService.createReaction(ideaId,formData); //create likes/dislikes
-        navigate(`/ideas/${ideaId}`);
+        navigate(`/ideas`);
 }
 
 return (
