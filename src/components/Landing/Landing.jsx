@@ -2,6 +2,7 @@ const Landing = () => {
   return (
     <>
       <main >
+      <div class="flex justify-center ...">
         <section >
           <img alt='Company Feedback & Idea Collaboration App' />
           <h1>Collaborate & Innovate with Difference</h1>
@@ -81,7 +82,7 @@ const Landing = () => {
             <button>Get Started Now</button>
           </article>
         </section>
-
+        </div>
       </main>
 
       <footer >

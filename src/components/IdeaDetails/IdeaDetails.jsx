@@ -33,8 +33,6 @@ const IdeaDetails = (props) => {
     fetchIdea();
   }, [ideaId]);
 
-  console.log("idea state:", idea);
-
   if (!idea) return <main>Loading...</main>;
 
   return (
@@ -42,20 +40,31 @@ const IdeaDetails = (props) => {
       <section>
         <header>
           <h1>{idea.title.toUpperCase()}</h1>
-          <h2>{idea.description}</h2>
-          <p>
-            {`${
-              idea.author === null ? "Anonymous" : idea.author.username
-            } posted on 
-              ${new Date(idea.createdAt).toLocaleDateString()}`}
-          </p>
-          {idea.originalAuthorId && idea.originalAuthorId._id === user._id && (
+          {idea.anonymity === "Non-Anonymous" ? (
+            <p>
+              {idea.author.username} posted on{" "}
+              {new Date(idea.createdAt).toLocaleDateString()}
+            </p>
+          ) : (
+            <p>
+              Anonymous posted on{" "}
+              {new Date(idea.createdAt).toLocaleDateString()}
+            </p>
+          )}
+          <h2>Description : {idea.description}</h2>
+          <h2>Key Benefits : {idea.keyBenefits}</h2>
+          <h2>Implementation Plan : {idea.implementationPlan}</h2>
+          {idea.author._id === user._id ? (
             <>
-              <Link to={`/ideas/${ideaId}/edit`}>Edit</Link>
-              <button onClick={() => props.handleDeleteIdea(ideaId)}>
-                Delete
+              <Link to={`/ideas/${ideaId}/edit`}>
+                Edit Idea
+              </Link>
+              <button onClick={() => {props.handleDeleteIdea(idea._id)}}>
+                Delete Idea
               </button>
             </>
+          ) : (
+            <></>
           )}
         </header>
         <section>
