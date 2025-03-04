@@ -21,23 +21,26 @@ const NavBar =()=> {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/ideas/new">+ Share a new idea</Link></li>
-        <li><Link to="/ideas">All ideas</Link></li>
-        <li><Link to="/">Your Ideas</Link></li>
+     
 
       </ul>
     </div>
         <a className="btn btn-ghost text-2xl">Idea Incubator</a>
-      </div>
+      </div>        
+      
+      <div><a className=" menu menu-sm bg-base-50 rounded-box z-1 mt-3 w-35 p-2 shadow"href="/ideas/new">+ Share a new idea</a></div>
+      <div><a className=" menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-35 p-2 shadow"href="/">Home</a></div>
+      <div><a className=" menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-35 p-2 shadow"href="/ideas">All ideas</a></div>
+      <div><a className=" menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-35 p-2 shadow"href to="/">Your Ideas</a></div>
+
 
       <div className="navbar-end">
         <img src='https://cdn.creazilla.com/icons/3251108/person-icon-md.png' alt='icon' width='20' height='20'></img>
-      <a className="btn btn-ghost">{user.username} </a>
+       <a className="btn btn-ghost">{user.username} </a>
 
-        <a className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]">
+   
           <Link to='/' onClick={handleSignOut}>Sign out</Link>
-        </a>
+        
       </div>
     </div>
       ) : (
@@ -48,12 +51,12 @@ const NavBar =()=> {
 
       <div className="navbar-end">
 
-        <a className="btn btn-ghost">
+
           <Link to="/sign-in">Log in</Link>
-        </a>
-        <a className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]">
+     
+ 
           <Link to="/sign-up">Sign up</Link>
-        </a>
+
       </div>
     </div>
       )}

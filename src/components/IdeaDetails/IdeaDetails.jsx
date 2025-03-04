@@ -52,9 +52,9 @@ const IdeaDetails = (props) => {
             </p>
           )}
           <h2>Description : {idea.description}</h2>
+          <h2>Category : {idea.category}</h2>
           <h2>Key Benefits : {idea.keyBenefits}</h2>
           <h2>Implementation Plan : {idea.implementationPlan}</h2>
-          {idea.author._id === user._id ? (
             <>
               <Link to={`/ideas/${ideaId}/edit`}>
                 Edit Idea
@@ -63,9 +63,7 @@ const IdeaDetails = (props) => {
                 Delete Idea
               </button>
             </>
-          ) : (
-            <></>
-          )}
+
         </header>
         <section>
           <h2>Reactions </h2>

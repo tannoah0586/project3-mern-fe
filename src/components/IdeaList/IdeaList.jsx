@@ -6,7 +6,7 @@ const IdeaList = ({ ideas }) => {
     <main>
       <h1 className="text-xl font-bold mb-4">Ideas</h1>
       <div className="grid gap-4">
-        {ideas.map((idea) => {
+        {ideas?.map((idea) => {
           const likesCount = idea.reactions.filter(
             (reaction) => reaction.type === "Like"
           ).length;
