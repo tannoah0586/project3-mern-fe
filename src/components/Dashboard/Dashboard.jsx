@@ -15,10 +15,14 @@ const Dashboard = ({ ideas }) => {
 
   return (
     <main>
+      
       <h1>Welcome, {user.username}</h1>
+
       <p>
         This is the dashboard page where you can see a list of all ideas.
       </p>
+      <br></br>
+      <h1>Top Ideas </h1>
       <ul>
         {ideas
           .map(idea => ({

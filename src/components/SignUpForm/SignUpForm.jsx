@@ -43,12 +43,14 @@ const SignUpForm = () => {
 
   return (
     <main >
+      <div class="flex justify-center ...">
     <section>
-    <img  alt='An owl sitting on a sign' />
     </section>
       <section>
       <form onSubmit={handleSubmit}>
+      < br></br>
       <h1>Sign Up</h1>
+      < br></br>
       <p>{message}</p>
         <div>
           <label htmlFor='username'>Username:</label>
@@ -83,12 +85,14 @@ const SignUpForm = () => {
             required
           />
         </div>
+        <br></br>
         <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+          <button className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]" disabled={isFormInvalid()}>Sign Up</button>
+          <button className="btn btn-ghost"onClick={() => navigate('/')}>Cancel</button>
         </div>
       </form>
       </section>
+      </div>
     </main>
   );
 };
