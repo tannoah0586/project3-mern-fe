@@ -44,6 +44,8 @@ const App =()=> {
     navigate(`/ideas/${ideaId}`);
   };
 
+  
+
   return(
     <>
       <NavBar />
@@ -59,6 +61,10 @@ const App =()=> {
               path='/ideas/:ideaId/edit'
               element={<IdeaForm handleUpdateIdea={handleUpdateIdea}/>}
               />
+          <Route 
+              path='/ideas/:ideaId/comments'
+              element={<CommentForm />}
+             /> 
              <Route 
               path='/ideas/:ideaId/comments/:commentId/edit'
               element={<CommentForm />}
