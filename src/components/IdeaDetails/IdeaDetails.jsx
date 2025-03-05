@@ -34,6 +34,7 @@ const IdeaDetails = (props) => {
     if (!idea) return <main className="pt-20 p-4">Loading...</main>;
 
     return (
+        
       <main className="pt-20 p-4 max-w-2xl mx-auto">
       <article className="bg-white rounded-lg shadow-md p-6 mb-8">
           <header className="mb-4 flex justify-between items-center">
@@ -79,7 +80,7 @@ const IdeaDetails = (props) => {
 
             <section className="bg-white rounded-lg shadow-md p-6">
                 <h2 className="text-xl font-bold mb-4">Comments</h2>
-                <CommentForm handleAddComment={handleAddComment} />
+                <CommentForm handleAddComment={handleAddComment}  />
                 {!(idea?.comments?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
                 {idea?.comments?.map((comment) => (
                     <article key={comment._id} className="border-t pt-4 mt-4">

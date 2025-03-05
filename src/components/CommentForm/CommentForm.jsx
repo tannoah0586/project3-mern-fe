@@ -1,9 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import * as ideaService from "../../services/ideaService";
+
 
 const CommentForm = (props) => {
+  const { commentId, ideaId } = useParams();
+  console.log(commentId, ideaId);
   const [formData, setFormData] = useState({ 
     text: '',anonymity: 'Non-Anonymous', 
 });
+ 
+  const navigate = useNavigate();
+
+useEffect(() => {
+  const fetchIdea = async () => {
+    const ideaData = await ideaService.show(ideaId);
+    setFormData(ideaData.comments.find((comment) => comment._id === commentId));
+  };
+  if (ideaId && commentId) fetchIdea();
+
+}, [ideaId, commentId]);
+
+
 
 const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -11,11 +29,23 @@ const handleChange = (evt) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddComment(formData);
-    setFormData({ text: '', anonymity: 'Non-Anonymous'});
-  };
+    if (ideaId && commentId){
+      console.log("Form Data before update:", formData);
+      ideaService.updateComment(ideaId, commentId, formData);
+      navigate(`/ideas/${ideaId}`)
+  }else {
+      props.handleAddComment(formData);
+      setFormData({ text: '', anonymity: 'Non-Anonymous'})
+  }
+};
 
   return (
+<>
+<br></br>
+
+<br></br>
+<br></br>
+    <h1>Edit Comment</h1>
     <form onSubmit={handleSubmit}>
       <label htmlFor='text-input'>Your comment: </label>
       <textarea
@@ -39,7 +69,8 @@ const handleChange = (evt) => {
         </select>
       <button type='submit'>SUBMIT COMMENT</button>
     </form>
-  );
+  
+    </>);
 };
 
 export default CommentForm;
