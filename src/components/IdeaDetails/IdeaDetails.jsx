@@ -2,115 +2,116 @@ import { useState, useEffect, useContext } from "react";
 import * as ideaService from "../../services/ideaService";
 import CommentForm from "../CommentForm/CommentForm";
 import { UserContext } from "../../contexts/UserContext";
-import { useParams, Link } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import ReactionForm from "../ReactionForm/ReactionForm";
 
 const IdeaDetails = (props) => {
-  const [idea, setIdea] = useState(null);
-  const { ideaId } = useParams();
-  const { user } = useContext(UserContext);
-  // console.log('ideaId', ideaId);
+    const [idea, setIdea] = useState(null);
+    const { ideaId } = useParams();
+    const { user } = useContext(UserContext);
 
-  const handleAddComment = async (commentFormData) => {
-    const newComment = await ideaService.createComment(ideaId, commentFormData);
-    setIdea({ ...idea, comments: [...idea.comments, newComment] });
-  };
-
-  const handleDeleteComment = async (commentId) => {
-    console.log("commentId:", commentId);
-    const deletedComment = await ideaService.deleteComment(ideaId, commentId);
-    setIdea({
-      ...idea,
-      comments: idea.comments.filter((comment) => comment._id !== commentId),
-    });
-  };
-
-  useEffect(() => {
-    const fetchIdea = async () => {
-      const ideaData = await ideaService.show(ideaId);
-      setIdea(ideaData);
+    const handleAddComment = async (commentFormData) => {
+        const newComment = await ideaService.createComment(ideaId, commentFormData);
+        setIdea({ ...idea, comments: [...(idea?.comments || []), newComment] });
     };
-    fetchIdea();
-  }, [ideaId]);
 
-  if (!idea) return <main>Loading...</main>;
+    const handleDeleteComment = async (commentId) => {
+        await ideaService.deleteComment(ideaId, commentId);
+        setIdea({
+            ...idea,
+            comments: idea?.comments?.filter((comment) => comment._id !== commentId) || [],
+        });
+    };
 
-  return (
-    <main>
-      <section>
-        <header>
-          <h1>{idea.title.toUpperCase()}</h1>
-          {idea.anonymity === "Non-Anonymous" ? (
-            <p>
-              {idea.author.username} posted on{" "}
-              {new Date(idea.createdAt).toLocaleDateString()}
-            </p>
-          ) : (
-            <p>
-              Anonymous posted on{" "}
-              {new Date(idea.createdAt).toLocaleDateString()}
-            </p>
-          )}
-          <h2>Description : {idea.description}</h2>
-          <h2>Category : {idea.category}</h2>
-          <h2>Key Benefits : {idea.keyBenefits}</h2>
-          <h2>Implementation Plan : {idea.implementationPlan}</h2>
-            <>
-              <Link to={`/ideas/${ideaId}/edit`}>
-                Edit Idea
-              </Link>
-              <button onClick={() => {props.handleDeleteIdea(idea._id)}}>
-                Delete Idea
-              </button>
-            </>
+    useEffect(() => {
+        const fetchIdea = async () => {
+            const ideaData = await ideaService.show(ideaId);
+            setIdea(ideaData);
+        };
+        fetchIdea();
+    }, [ideaId]);
 
-        </header>
-        <section>
-          <h2>Reactions </h2>
-          <ReactionForm />
-        </section>
-        <p>{idea.text}</p>
-      </section>
-      <section>
-        <h2>Comments</h2>
-        <CommentForm handleAddComment={handleAddComment} />
-        {!idea.comments.length && <p>There are no comments.</p>}
+    if (!idea) return <main className="pt-20 p-4">Loading...</main>;
 
-        {idea.comments.map((comment) => (
-          <article key={comment._id}>
-            <header>
+    return (
+      <main className="pt-20 p-4 max-w-2xl mx-auto">
+      <article className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <header className="mb-4 flex justify-between items-center">
               <div>
-                {comment.anonymity === "Non-Anonymous" ? (
-                  <p>
-                    {comment.author.username} posted on{" "}
-                    {new Date(comment.createdAt).toLocaleDateString()}
+                  <h1 className="text-2xl font-bold mb-2">{idea?.title?.toUpperCase()}</h1>
+                  <p className="text-sm text-gray-600">
+                      {idea?.anonymity === "Non-Anonymous"
+                          ? `${idea?.author?.username} posted on ${new Date(idea?.createdAt).toLocaleDateString()}`
+                          : `Anonymous posted on ${new Date(idea?.createdAt).toLocaleDateString()}`}
                   </p>
-                ) : (
-                  <p>
-                    Anonymous posted on{" "}
-                    {new Date(comment.createdAt).toLocaleDateString()}
-                  </p>
-                )}
-                <p>{comment.text}</p>
-                {comment.author._id === user._id ? (
-                  <>
-                    <Link to={`/ideas/${ideaId}/comments/${comment._id}/edit`}>
-                      Edit Comment
-                    </Link>
-                    <button onClick={() => handleDeleteComment(comment._id)}>
-                      Delete Comment
-                    </button>
-                  </>
-                ) : (
-                  <></>
-                )}
               </div>
-            </header>
-          </article>
-        ))}
-      </section>
-    </main>
-  );
+                </header>
+                <div className="space-y-4">
+                    <p><strong>Description:</strong> {idea?.description}</p>
+                    <p><strong>Category:</strong> {idea?.category}</p>
+                    <p><strong>Key Benefits:</strong> {idea?.keyBenefits}</p>
+                    <p><strong>Implementation Plan:</strong> {idea?.implementationPlan}</p>
+                </div>
+                <div className="mt-4 flex space-x-2">
+                    <Link to={`/ideas/${ideaId}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Edit Idea
+                    </Link>
+                    <button
+                        onClick={() => props.handleDeleteIdea(idea._id)}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                        Delete Idea
+                    </button>
+                </div>
+            </article>
+
+            <section className="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 className="text-xl font-bold mb-4">Reactions</h2>
+                <ReactionForm idea={idea} setIdea={setIdea} />
+                <div className="flex space-x-4 mt-4">
+                    {idea?.reactions?.map((reaction) => (
+                        <div key={reaction._id}>
+                            {reaction.type}: {reaction.count}
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section className="bg-white rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-bold mb-4">Comments</h2>
+                <CommentForm handleAddComment={handleAddComment} />
+                {!(idea?.comments?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
+                {idea?.comments?.map((comment) => (
+                    <article key={comment._id} className="border-t pt-4 mt-4">
+                        <header className="mb-2">
+                            <p className="text-sm text-gray-600">
+                                {comment?.anonymity === "Non-Anonymous"
+                                    ? `${comment?.author?.username} posted on ${new Date(comment?.createdAt).toLocaleDateString()}`
+                                    : `Anonymous posted on ${new Date(comment?.createdAt).toLocaleDateString()}`}
+                            </p>
+                        </header>
+                        <p>{comment?.text}</p>
+                        {comment?.author?._id === user?._id && (
+                            <div className="mt-2 flex space-x-2">
+                                <Link
+                                    to={`/ideas/${ideaId}/comments/${comment._id}/edit`}
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                >
+                                    Edit Comment
+                                </Link>
+                                <button
+                                    onClick={() => handleDeleteComment(comment._id)}
+                                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                >
+                                    Delete Comment
+                                </button>
+                            </div>
+                        )}
+                    </article>
+                ))}
+            </section>
+        </main>
+    );
 };
 
 export default IdeaDetails;

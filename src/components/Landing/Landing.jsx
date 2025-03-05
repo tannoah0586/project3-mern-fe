@@ -1,94 +1,102 @@
+import React from 'react';
+import ideaLogo from '../../assets/bulb-idea-light.svg';
+import feedback from '../../assets/feedback.svg';
+import voting from '../../assets/voteinfo.svg';
+import man from '../../assets/man.svg';
+import woman from '../../assets/woman.svg';
+
+
 const Landing = () => {
   return (
-    <>
-      <main >
-      <div class="flex justify-center ...">
-        <section >
-          <img alt='Company Feedback & Idea Collaboration App' />
-          <h1>Collaborate & Innovate with Difference</h1>
-          <p>Transform your company's feedback and idea generation with our intuitive platform.</p>
-        </section>
+      <main className="pt-20">
+          {/* Hero Section */}
+          <section className="bg-gradient-to-r from-blue-100 to-blue-50 p-8 text-center">
+              <div className="max-w-3xl mx-auto">
+                  <h1 className="text-4xl font-bold mb-4">Empower Your Team with Idea Sharing</h1>
+                  <p className="text-lg text-gray-700 mb-8">
+                      Unlock your company's potential by fostering a culture of innovation and collaboration.
+                  </p>
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full">
+                      Get Started
+                  </button>
+              </div>
+          </section>
 
-        <section>
-          <header>
-            <h3>ABOUT OUR PLATFORM</h3>
-            <h1>Unleash Collective Intelligence</h1>
-          </header>
-          <article>
-            <p>
-              Idea is designed to empower your team to share, discuss, and develop innovative ideas. We provide a seamless platform for capturing valuable feedback, fostering collaboration, and driving meaningful change within your organization.
-            </p>
-            <p>
-              Whether you're looking to improve internal processes, enhance product development, or simply encourage open communication, Idea offers the tools you need to succeed. Join a community where every voice matters, and every idea has the potential to shape the future.
-            </p>
-          </article>
-        </section>
+          {/* Features Section */}
+          <section className="py-16">
+              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 p-4">
+                  <div className="text-center">
+                      <img src={ideaLogo} alt="Idea Sharing" className="mx-auto h-12 mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">Idea Sharing</h3>
+                      <p className="text-gray-600">Easily submit and share innovative ideas with colleagues.</p>
+                  </div>
+                  <div className="text-center">
+                      <img src={feedback} alt="Feedback Collection" className="mx-auto h-12 mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">Feedback Collection</h3>
+                      <p className="text-gray-600">Gather constructive feedback to refine and improve concepts.</p>
+                  </div>
+                  <div className="text-center">
+                      <img src={voting} alt="Voting & Prioritization" className="mx-auto h-12 mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">Voting & Prioritization</h3>
+                      <p className="text-gray-600">Identify top ideas through voting and prioritization.</p>
+                  </div>
+              </div>
+          </section>
 
-        <section >
-          <header>
-            <h3>KEY FEATURES</h3>
-            <h1>Why Choose Idea?</h1>
-          </header>
-          <article>
-            <ul>
-              <li><strong>Idea Sharing:</strong> Easily submit and share your ideas with colleagues.</li>
-              <li><strong>Feedback Collection:</strong> Gather constructive feedback to refine and improve concepts.</li>
-              <li><strong>Collaborative Discussions:</strong> Engage in meaningful conversations and build upon each other's ideas.</li>
-              <li><strong>Voting & Prioritization:</strong> Identify the most promising ideas through voting and prioritization.</li>
-              <li><strong>Anonymity Options:</strong> Enable honest feedback with customizable anonymity settings.</li>
-            </ul>
-          </article>
-        </section>
+          {/* About Platform Section */}
+          <section className="bg-gray-100 py-16">
+              <div className="max-w-3xl mx-auto p-4 text-center">
+                  <h2 className="text-3xl font-bold mb-8">Unleash Your Team's Creativity</h2>
+                  <p className="text-lg text-gray-700 mb-8">
+                      Our platform empowers employees to share, discuss, and develop innovative ideas, fostering a culture of collaboration and growth.
+                  </p>
+                  <p className="text-lg text-gray-700">
+                      Join a community where every idea matters and has the potential to drive meaningful change.
+                  </p>
+              </div>
+          </section>
 
-        <section >
-          <header>
-            <h3>WHAT OUR USERS SAY</h3>
-            <h1>TESTIMONIALS</h1>
-          </header>
-          <article>
-            <header>
-              <h4>Sarah Chen</h4>
-              <p>Innovation Manager</p>
-            </header>
-            <p>
-              Idea has revolutionized how we collect and process feedback. The ability to anonymously share ideas has significantly increased participation and brought forward valuable insights we wouldn't have otherwise captured.
-            </p>
-            <footer>
-              <img  alt='Five gold stars' />
-            </footer>
-          </article>
+          {/* Testimonials Section */}
+          <section className="py-16">
+              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-4">
+                  <div className="border rounded-lg p-6">
+                      <p className="text-gray-700 mb-4">"Idea has transformed how we gather feedback. The anonymity feature has been invaluable."</p>
+                      <div className="flex items-center mt-4">
+                          <img src={woman} alt="Sarah Chen" className="h-10 w-10 rounded-full mr-4" />
+                          <div>
+                              <h4 className="font-semibold">Sarah Chen</h4>
+                              <p className="text-sm text-gray-600">Innovation Manager</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="border rounded-lg p-6">
+                      <p className="text-gray-700 mb-4">"The voting and discussion features have really streamlined our idea process."</p>
+                      <div className="flex items-center mt-4">
+                          <img src={man} alt="David Lee" className="h-10 w-10 rounded-full mr-4" />
+                          <div>
+                              <h4 className="font-semibold">David Lee</h4>
+                              <p className="text-sm text-gray-600">Product Development Lead</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
 
-          <article>
-            <header>
-              <h4>David Lee</h4>
-              <p>Team Lead, Product Development</p>
-            </header>
-            <p>
-              The collaborative discussions and voting features have streamlined our idea prioritization process. Idea has become an essential tool for driving innovation within our team.
-            </p>
-            <footer>
-              <img  alt='Five gold stars' />
-            </footer>
-          </article>
+          {/* Call to Action Section */}
+          <section className="bg-blue-50 py-16 text-center">
+              <div className="max-w-3xl mx-auto p-4">
+                  <h2 className="text-3xl font-bold mb-8">Ready to Boost Your Team's Innovation?</h2>
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full">
+                      Sign Up Now
+                  </button>
+              </div>
+          </section>
 
-        </section>
-
-        <section >
-          <header>
-            <h1>Ready to Transform Your Company's Feedback?</h1>
-          </header>
-          <article>
-            <p>Join Idea today and start building a culture of innovation and collaboration.</p>
-            <button>Get Started Now</button>
-          </article>
-        </section>
-        </div>
+          {/* Footer */}
+          <footer className="text-center py-4 bg-gray-100">
+              © 2025 Idea INC. ALL RIGHTS RESERVED.
+          </footer>
       </main>
-
-      <footer >
-        © 2025 Idea INC. ALL RIGHTS RESERVED.
-      </footer>
-    </>
   );
 };
 
