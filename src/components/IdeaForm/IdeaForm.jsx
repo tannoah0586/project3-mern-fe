@@ -6,7 +6,7 @@ const IdeaForm = (props) => {
     const { ideaId } = useParams();
     const [formData, setFormData] = useState({
         title: '',
-        category: '',
+        category: 'Productivity',
         description: '',
         keyBenefits: '',
         implementationPlan: '',
@@ -28,21 +28,24 @@ const IdeaForm = (props) => {
     };
 
     useEffect(() => {
-        const fetchIdea = async () => {
-            const ideaData = await ideaService.show(ideaId);
-            setFormData(ideaData);
-        };
-        if (ideaId) fetchIdea();
-        return () =>
-            setFormData({
-                title: '',
-                category: '',
-                description: '',
-                keyBenefits: '',
-                implementationPlan: '',
-                anonymity: 'Non-Anonymous',
-            });
-    }, [ideaId]);
+      const fetchIdea = async () => {
+          const ideaData = await ideaService.show(ideaId);
+          setFormData(ideaData);
+      };
+      if (ideaId) fetchIdea();
+      return () => {
+        if(!ideaId){
+          setFormData({
+              title: '',
+              category: 'Productivity',
+              description: '',
+              keyBenefits: '',
+              implementationPlan: '',
+              anonymity: 'Non-Anonymous',
+          });
+        }
+      }
+  }, [ideaId]);
 
     return (
         <main className="flex justify-center items-center min-h-screen p-4">
