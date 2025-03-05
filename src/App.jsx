@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
-import IdeaList from './components/IdeaList/IdeaList';
-import NavBar from './components/NavBar/NavBar';
-import './App.css';
+import IdeaList from './components/IdeaList/IdeaList'
+import NavBar from './components/NavBar/NavBar'
+import './App.css'
 import * as ideaService from './services/ideaService';
 import IdeaDetails from './components/IdeaDetails/IdeaDetails';
 import IdeaForm from './components/IdeaForm/IdeaForm';
@@ -13,81 +13,64 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import CommentForm from './components/CommentForm/CommentForm';
 
-const App = () => {
-    const [ideas, setIdeas] = useState([]);
-    const navigate = useNavigate();
-    const { user } = useContext(UserContext);
+const App =()=> {
+  const [ideas,setIdeas] = useState([]);
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
-    useEffect(() => {
-        const fetchAllIdeas = async () => {
-            const ideasData = await ideaService.index();
-            setIdeas(ideasData);
-        };
-        if (user) fetchAllIdeas();
-    }, [user]);
+  useEffect(()=> {
+    const fetchAllIdeas = async () => {
+      const ideasData = await ideaService.index();
+      setIdeas(ideasData);
+    }
+    if (user) fetchAllIdeas();
+  },[user]);
 
-    const handleAddIdea = async (ideaFormData) => {
-        const newIdea = await ideaService.create(ideaFormData);
-        setIdeas([newIdea, ...ideas]);
-        navigate('/ideas');
-    };
+  const handleAddIdea = async (ideaFormData) => {
+    const newIdea = await ideaService.create(ideaFormData);
+    setIdeas([newIdea, ...ideas]);
+    navigate('/ideas');
+  };
 
-    const handleDeleteIdea = async (ideaId) => {
-        const deletedIdea = await ideaService.deleteIdea(ideaId);
-        setIdeas(ideas.filter((idea) => idea._id !== deletedIdea._id));
-        navigate('/ideas');
-    };
+  const handleDeleteIdea = async (ideaId) => {
+    const deletedIdea = await ideaService.deleteIdea(ideaId);
+    setIdeas(ideas.filter((idea) => idea._id !== deletedIdea._id));
+    navigate('/ideas');
+  };
 
-    const handleUpdateIdea = async (ideaId, ideaFormData) => {
-        const updatedIdea = await ideaService.update(ideaId, ideaFormData);
-        setIdeas(ideas.map((idea) => (ideaId === idea._id ? updatedIdea : idea)));
-        navigate(`/ideas/${ideaId}`);
-    };
+  const handleUpdateIdea = async (ideaId, ideaFormData) => {
+    const updatedIdea = await ideaService.update(ideaId, ideaFormData);
+    setIdeas(ideas.map((idea) => (ideaId === idea._id ? updatedIdea : idea)));
+    navigate(`/ideas/${ideaId}`);
+  };
 
-    const handleUpdateComment = async (ideaId, commentId, commentFormData) => {
-        const updatedComment = await ideaService.updateComment(ideaId, commentId, commentFormData);
-
-        setIdeas(
-            ideas.map((idea) => {
-                if (idea._id === ideaId) {
-                    return {
-                        ...idea,
-                        comments: idea.comments.map((comment) =>
-                            comment._id === commentId ? updatedComment : comment
-                        ),
-                    };
-                }
-                return idea;
-            })
-        );
-        navigate(`/ideas/${ideaId}`);
-    };
-
-    return (
-        <>
-            <NavBar />
-            <Routes>
-                <Route path='/' element={user ? <Dashboard ideas={ideas} /> : <Landing />} />
-                {user ? (
-                    <>
-                        {/* protected routes */}
-                        <Route path='/ideas' element={<IdeaList ideas={ideas} />} />
-                        <Route path='ideas/:ideaId' element={<IdeaDetails handleDeleteIdea={handleDeleteIdea} />} />
-                        <Route path='/ideas/new' element={<IdeaForm handleAddIdea={handleAddIdea} />} />
-                        <Route path='/ideas/:ideaId/edit' element={<IdeaForm handleUpdateIdea={handleUpdateIdea} />} />
-                        <Route
-                            path='/ideas/:ideaId/comments/:commentId/edit'
-                            element={<CommentForm handleUpdateComment={handleUpdateComment} />}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <Route path='/sign-in' element={<SignInForm />} />
-                        <Route path='/sign-up' element={<SignUpForm />} />
-                    </>
-                )}
-            </Routes>
-        </>
-    );
-};
+  return(
+    <>
+      <NavBar />
+      <Routes>
+        <Route path='/' element= {user ? <Dashboard ideas={ideas}/> :<Landing />}/>
+        {user? ( 
+          <>
+          {/* protected routes */}
+            <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
+            <Route path='ideas/:ideaId' element ={<IdeaDetails handleDeleteIdea = {handleDeleteIdea} />}/>
+            <Route path='/ideas/new' element = {<IdeaForm handleAddIdea ={handleAddIdea} />}/>
+            <Route
+              path='/ideas/:ideaId/edit'
+              element={<IdeaForm handleUpdateIdea={handleUpdateIdea}/>}
+              />
+             <Route 
+              path='/ideas/:ideaId/comments/:commentId/edit'
+              element={<CommentForm />}
+             /> 
+          </>
+        ) : (
+          <>
+            <Route path ='/sign-in' element = {<SignInForm />}/>
+            <Route path ='/sign-up' element = {<SignUpForm />}/>
+          </>
+        )}
+      </Routes>
+    </>
+  )};
 export default App;
