@@ -10,10 +10,8 @@ const NavBar = () => {
         setUser(null);
     };
 
-    const pillButtonStyle = "px-4 py-2 rounded-full text-white"; // Reusable pill button styles
-
     return (
-        <nav className="fixed w-full z-50">
+        <nav className="fixed w-full z-50"> {/* Added fixed, w-full, z-50*/}
             {user ? (
                 <div className="navbar bg-base-100 shadow-sm">
                     <div className="navbar-start">
@@ -37,6 +35,9 @@ const NavBar = () => {
                     </div>
 
                     <div className="flex space-x-4 items-center">
+                        {/* <Link to="/ideas/new" className="btn btn-sm bg-blue-500 text-white hover:bg-blue-600">
+                            + Share a new idea
+                        </Link> */}
                         <Link to="/" className="btn btn-sm">Home</Link>
                         <Link to="/ideas" className="btn btn-sm">All ideas</Link>
                         <Link to="/" className="btn btn-sm">Your Ideas</Link>
@@ -48,7 +49,7 @@ const NavBar = () => {
                         <Link
                             to="/"
                             onClick={handleSignOut}
-                            className={`${pillButtonStyle} bg-[#5EBB2B] border-[#4eaa0c]`}
+                            className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]"
                         >
                             Sign out
                         </Link>
@@ -61,8 +62,8 @@ const NavBar = () => {
                     </div>
 
                     <div className="navbar-end">
-                        <Link to="/sign-in" className={`${pillButtonStyle} bg-gray-600 border-gray-700`}>Log in</Link>
-                        <Link to="/sign-up" className={`${pillButtonStyle} bg-[#5EBB2B] border-[#4eaa0c]`}>Sign up</Link>
+                        <Link to="/sign-in" className="btn btn-ghost">Log in</Link>
+                        <Link to="/sign-up" className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]">Sign up</Link>
                     </div>
                 </div>
             )}
