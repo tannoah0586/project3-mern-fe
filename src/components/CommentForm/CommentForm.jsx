@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router';
+
+import * as ideaService from '../../services/ideaService';
 
 const CommentForm = (props) => {
+
+  const { ideaId, commentId } = useParams();
   const [formData, setFormData] = useState({ 
     text: '',anonymity: 'Non-Anonymous', 
 });
+
+useEffect(()=> {
+  const fetchIdea = async () => {
+    const ideaData = await ideaService.show(ideaId);
+    setFormData(ideaData.comments.find((comm)=>comm._id === commentId));
+  };
+  if (ideaId && commentId) fetchIdea();
+},[ideaId,commentId]);
+
+console.log("ideaId:", ideaId, "commentId:",commentId);
 
 const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });

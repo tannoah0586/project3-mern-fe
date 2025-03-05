@@ -34,63 +34,15 @@ const IdeaDetails = (props) => {
     if (!idea) return <main className="pt-20 p-4">Loading...</main>;
 
     return (
-      <main className="pt-20 p-4 max-w-2xl mx-auto">
-      <article className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <header className="mb-4 flex justify-between items-center">
-              <div>
-                  <h1 className="text-2xl font-bold mb-2">{idea?.title?.toUpperCase()}</h1>
-                  <p className="text-sm text-gray-600">
-                      {idea?.anonymity === "Non-Anonymous"
-                          ? `${idea?.author?.username} posted on ${new Date(idea?.createdAt).toLocaleDateString()}`
-                          : `Anonymous posted on ${new Date(idea?.createdAt).toLocaleDateString()}`}
-                  </p>
-              </div>
-                </header>
-                <div className="space-y-4">
-                    <p><strong>Description:</strong> {idea?.description}</p>
-                    <p><strong>Category:</strong> {idea?.category}</p>
-                    <p><strong>Key Benefits:</strong> {idea?.keyBenefits}</p>
-                    <p><strong>Implementation Plan:</strong> {idea?.implementationPlan}</p>
-                </div>
-                <div className="mt-4 flex space-x-2">
-                    <Link to={`/ideas/${ideaId}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Edit Idea
-                    </Link>
-                    <button
-                        onClick={() => props.handleDeleteIdea(idea._id)}
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                        Delete Idea
-                    </button>
-                </div>
-            </article>
-
-            <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-                <h2 className="text-xl font-bold mb-4">Reactions</h2>
-                <ReactionForm idea={idea} setIdea={setIdea} />
-                <div className="flex space-x-4 mt-4">
-                    {idea?.reactions?.map((reaction) => (
-                        <div key={reaction._id}>
-                            {reaction.type}: {reaction.count}
-                        </div>
-                    ))}
-                </div>
-            </section>
-
+        <main className="pt-20 p-4 max-w-xl mx-auto">
+            {/* ... other code ... */}
             <section className="bg-white rounded-lg shadow-md p-6">
                 <h2 className="text-xl font-bold mb-4">Comments</h2>
                 <CommentForm handleAddComment={handleAddComment} />
                 {!(idea?.comments?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
                 {idea?.comments?.map((comment) => (
                     <article key={comment._id} className="border-t pt-4 mt-4">
-                        <header className="mb-2">
-                            <p className="text-sm text-gray-600">
-                                {comment?.anonymity === "Non-Anonymous"
-                                    ? `${comment?.author?.username} posted on ${new Date(comment?.createdAt).toLocaleDateString()}`
-                                    : `Anonymous posted on ${new Date(comment?.createdAt).toLocaleDateString()}`}
-                            </p>
-                        </header>
-                        <p>{comment?.text}</p>
+                        {/* ... other comment content ... */}
                         {comment?.author?._id === user?._id && (
                             <div className="mt-2 flex space-x-2">
                                 <Link
