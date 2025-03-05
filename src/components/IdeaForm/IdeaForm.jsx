@@ -6,7 +6,7 @@ const IdeaForm = (props) => {
     const { ideaId } = useParams();
     const [formData, setFormData] = useState({
         title: '',
-        category: '',
+        category: 'Productivity',
         description: '',
         keyBenefits: '',
         implementationPlan: '',
@@ -36,7 +36,7 @@ const IdeaForm = (props) => {
         return () =>
             setFormData({
                 title: '',
-                category: '',
+                category: 'Productivity',
                 description: '',
                 keyBenefits: '',
                 implementationPlan: '',

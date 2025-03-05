@@ -15,6 +15,11 @@ const IdeaDetails = (props) => {
         setIdea({ ...idea, comments: [...(idea?.comments || []), newComment] });
     };
 
+    const handleAddReaction = async (reactionFormData) => {
+        const newReaction = await ideaService.createReaction(ideaId, reactionFormData);
+        setIdea({ ...idea, reactions: [...(idea?.reactions || []), newReaction] });
+    };
+
     const handleDeleteComment = async (commentId) => {
         await ideaService.deleteComment(ideaId, commentId);
         setIdea({
@@ -38,7 +43,7 @@ const IdeaDetails = (props) => {
       <main className="pt-20 p-4 max-w-2xl mx-auto">
       <article className="bg-white rounded-lg shadow-md p-6 mb-8">
           <header className="mb-4 flex justify-between items-center">
-              <div>
+          <div>
                   <h1 className="text-2xl font-bold mb-2">{idea?.title?.toUpperCase()}</h1>
                   <p className="text-sm text-gray-600">
                       {idea?.anonymity === "Non-Anonymous"
@@ -53,6 +58,7 @@ const IdeaDetails = (props) => {
                     <p><strong>Key Benefits:</strong> {idea?.keyBenefits}</p>
                     <p><strong>Implementation Plan:</strong> {idea?.implementationPlan}</p>
                 </div>
+                {idea?.author?._id === user?._id && 
                 <div className="mt-4 flex space-x-2">
                     <Link to={`/ideas/${ideaId}/edit`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Edit Idea
@@ -64,18 +70,22 @@ const IdeaDetails = (props) => {
                         Delete Idea
                     </button>
                 </div>
+}
             </article>
 
             <section className="bg-white rounded-lg shadow-md p-6 mb-8">
                 <h2 className="text-xl font-bold mb-4">Reactions</h2>
-                <ReactionForm idea={idea} setIdea={setIdea} />
-                <div className="flex space-x-4 mt-4">
-                    {idea?.reactions?.map((reaction) => (
-                        <div key={reaction._id}>
-                            {reaction.type}: {reaction.count}
-                        </div>
-                    ))}
-                </div>
+                <ReactionForm handleAddReaction={handleAddReaction} />
+                {!(idea?.reactions?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
+                {idea?.reactions?.map((reaction) => (
+                <article key={reaction._id} className="border-t pt-4 mt-4">
+                        <header className="mb-2">
+                            <p className="text-sm text-gray-600">
+                                {`${reaction?.author?.username} posted on ${new Date(reaction?.createdAt).toLocaleDateString()}`}
+                            </p>
+                        </header>
+                        <p>{reaction?.type}</p>
+    </article>))}
             </section>
 
             <section className="bg-white rounded-lg shadow-md p-6">
