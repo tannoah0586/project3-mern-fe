@@ -62,7 +62,7 @@ const NavBar = () => {
 
                     <div className="navbar-end">
                         <Link to="/sign-in" className={`${pillButtonStyle} bg-gray-600 border-gray-700`}>Log in</Link>
-                        <Link to="/sign-up" className={`${pillButtonStyle} bg-[#5EBB2B] border-[#4eaa0c]`}>Sign up</Link>
+                        <Link to="/sign-up" className={`${pillButtonStyle} bg-green-600 border-[#4eaa0c]`}>Sign up</Link>
                     </div>
                 </div>
             )}
