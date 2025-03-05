@@ -3,7 +3,7 @@ import * as ideaService from '../../services/ideaService';
 import { useParams, useNavigate } from 'react-router';
 
 
-const ReactionForm = () => {
+const ReactionForm = (props) => {
     const [formData, setFormData] = useState({
         type: "Like", //default setting
     })
@@ -18,8 +18,8 @@ const ReactionForm = () => {
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        ideaService.createReaction(ideaId,formData); //create likes/dislikes
-        navigate(`/ideas`);
+        props.handleAddReaction(formData)
+        navigate(`/ideas/${ideaId}`);
 }
 
 return (

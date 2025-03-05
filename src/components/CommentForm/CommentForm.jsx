@@ -5,7 +5,7 @@ import * as ideaService from "../../services/ideaService";
 
 const CommentForm = (props) => {
   const { commentId, ideaId } = useParams();
-  console.log(commentId, ideaId);
+  // console.log(commentId, ideaId);
   const [formData, setFormData] = useState({ 
     text: '',anonymity: 'Non-Anonymous', 
 });
@@ -42,10 +42,8 @@ const handleChange = (evt) => {
   return (
 <>
 <br></br>
-
 <br></br>
 <br></br>
-    <h1>Edit Comment</h1>
     <form onSubmit={handleSubmit}>
       <label htmlFor='text-input'>Your comment: </label>
       <textarea
