@@ -28,7 +28,7 @@ const NavBar = () => {
                                 <li><Link to="/" className="hover:bg-gray-200 block py- px-4 rounded text-lg">Home</Link></li>
                                 <li><Link to="/ideas/new" className="hover:bg-gray-200 block py-2 px-4 rounded">+ Share a new idea</Link></li>
                                 <li><Link to="/ideas" className="hover:bg-gray-200 block py-2 px-4 rounded">All Ideas</Link></li>
-                                <li><Link to="/" className="hover:bg-gray-200 block py-2 px-4 rounded">Your Ideas</Link></li>
+                                <li><Link to="/yourIdeas" className="hover:bg-gray-200 block py-2 px-4 rounded">Your Ideas</Link></li>
                             </ul>
                         </div>
                         <Link to="/" className="btn btn-ghost text-2xl">Idea Incubator</Link>
@@ -40,7 +40,7 @@ const NavBar = () => {
                         </Link> */}
                         <Link to="/" className="btn btn-sm">Home</Link>
                         <Link to="/ideas" className="btn btn-sm">All ideas</Link>
-                        <Link to="/" className="btn btn-sm">Your Ideas</Link>
+                        <Link to="/yourideas" className="btn btn-sm">Your Ideas</Link>
                     </div>
 
                     <div className="navbar-end flex items-center space-x-4">
