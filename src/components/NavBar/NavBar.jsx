@@ -29,8 +29,8 @@ const NavBar = () => {
                     </div>
 
                     <div className="navbar-end flex items-center space-x-4">
-                        <img src={User} alt='icon' className='h-5 w-5' />
-                        <span className="btn btn-ghost">{user.username}</span>
+                        <img src={User} alt='icon' className='h-8' />
+                        <span className="font-bold item">{user.username}</span>
                         <Link
                             to="/"
                             onClick={handleSignOut}
