@@ -91,6 +91,7 @@ const IdeaForm = (props) => {
                             name="description"
                             id="description-input"
                             value={formData.description}
+                            rows="4"
                             onChange={handleChange}
                             className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
@@ -105,6 +106,7 @@ const IdeaForm = (props) => {
                             id="keyBenefits-input"
                             value={formData.keyBenefits}
                             onChange={handleChange}
+                            rows="4"
                             className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
@@ -118,6 +120,7 @@ const IdeaForm = (props) => {
                             id="implementationPlan-input"
                             value={formData.implementationPlan}
                             onChange={handleChange}
+                            rows="4"
                             className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>

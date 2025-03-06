@@ -16,19 +16,30 @@ const YourIdeaList = ({ ideas }) => {
 
 
     return (
-        <main className="p-4">
-            <h1 className="text-2xl font-bold mb-6">Ideas</h1>
-            <div className="flex flex-row space-x-6 overflow-x-auto">
+        <main className="pt-40 p-4">
+            {/* Top Section */}
+            <div className="fixed top-27 left-1/2 -translate-x-1/2 z-40"> {/* Changed top-25 to top-32 */}
+                <Link
+                    to="/ideas/new"
+                    className="py-3 px-6 text-lg font-bold rounded-full text-white bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
+                >
+                    + Share a new idea
+                </Link>
+            </div>
+            <div className="w-3/3 mx-auto h-0.5 bg-gradient-to-r from-transparent via-lime-400 to-transparent my-6"></div>
+
+            <h1 className="text-3xl font-bold mb-6 text-center"> Your Ideas</h1>
+            <div className="flex flex-row space-x-6 overflow-x-auto pl-8">
                 {yourIdeas?.map((idea, index) => {
                     const likesCount = idea?.reactions?.filter((reaction) => reaction.type === "Like").length || 0;
                     const dislikesCount = idea?.reactions?.filter((reaction) => reaction.type === "Dislike").length || 0;
-                    const bgColor = bgColors[index % bgColors.length]; // Cycle through colors
+                    const bgColor = bgColors[index % bgColors.length];
 
                     return (
                         <Link
                             to={`/ideas/${idea?._id}`}
                             key={idea?._id}
-                            className={`block ${bgColor} text-black p-6 rounded-xl shadow-md transition duration-200 min-w-[250px]`} // Added min-w
+                            className={`block ${bgColor} text-black p-6 rounded-xl shadow-md transition duration-200 min-w-[250px]`}
                         >
                             <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-nowrap text-ellipsis">{idea?.title}</h3>
                             <p className="text-sm text-gray-700 mb-1">
@@ -50,6 +61,7 @@ const YourIdeaList = ({ ideas }) => {
                     );
                 })}
             </div>
+
         </main>
     );
 };

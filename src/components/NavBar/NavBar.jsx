@@ -27,10 +27,10 @@ const NavBar = () => {
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                             >
-                                <li><Link to="/" className="hover:bg-gray-200 block py- px-4 rounded text-lg">Home</Link></li>
+                                <li><Link to="/" className="hover:bg-gray-200 block py- px-4 rounded text-xl">Home</Link></li>
                                 <li><Link to="/ideas/new" className="hover:bg-gray-200 block py-2 px-4 rounded">+ Share a new idea</Link></li>
-                                <li><Link to="/ideas" className="hover:bg-gray-200 block py-2 px-4 rounded">All Ideas</Link></li>
-                                <li><Link to="/yourIdeas" className="hover:bg-gray-200 block py-2 px-4 rounded">Your Ideas</Link></li>
+                                <li><Link to="/ideas" className="hover:bg-gray-200 block py-2 px-4 rounded text-xl">All Ideas</Link></li>
+                                <li><Link to="/yourIdeas" className="hover:bg-gray-200 block py-2 px-4 rounded text-xl">Your Ideas</Link></li>
                             </ul>
                         </div>
                         <Link to="/" className="btn btn-ghost text-2xl">
