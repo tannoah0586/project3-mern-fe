@@ -51,8 +51,8 @@ const IdeaForm = (props) => {
                     {ideaId ? 'Edit Idea' : 'New Idea'}
                 </h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label htmlFor="title-input" className="block text-sm font-medium text-gray-700">
+                    <div className="flex items-start">
+                        <label htmlFor="title-input" className="block text-sm font-medium text-gray-700 w-1/4">
                             Title
                         </label>
                         <input
@@ -62,11 +62,11 @@ const IdeaForm = (props) => {
                             id="title-input"
                             value={formData.title}
                             onChange={handleChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="category-input" className="block text-sm font-medium text-gray-700">
+                    <div className="flex items-start">
+                        <label htmlFor="category-input" className="block text-sm font-medium text-gray-700 w-1/4">
                             Category
                         </label>
                         <select
@@ -75,15 +75,15 @@ const IdeaForm = (props) => {
                             id="category-input"
                             value={formData.category}
                             onChange={handleChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
                             <option value="Productivity">Productivity</option>
                             <option value="Staff Welfare">Staff Welfare</option>
                             <option value="Service Quality">Service Quality</option>
                         </select>
                     </div>
-                    <div>
-                        <label htmlFor="description-input" className="block text-sm font-medium text-gray-700">
+                    <div className="flex items-start">
+                        <label htmlFor="description-input" className="block text-sm font-medium text-gray-700 w-1/4">
                             Description
                         </label>
                         <textarea
@@ -91,12 +91,13 @@ const IdeaForm = (props) => {
                             name="description"
                             id="description-input"
                             value={formData.description}
+                            rows="4"
                             onChange={handleChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="keyBenefits-input" className="block text-sm font-medium text-gray-700">
+                    <div className="flex items-start">
+                        <label htmlFor="keyBenefits-input" className="block text-sm font-medium text-gray-700 w-1/4">
                             Key Benefits
                         </label>
                         <textarea
@@ -105,11 +106,12 @@ const IdeaForm = (props) => {
                             id="keyBenefits-input"
                             value={formData.keyBenefits}
                             onChange={handleChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            rows="4"
+                            className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="implementationPlan-input" className="block text-sm font-medium text-gray-700">
+                    <div className="flex items-start">
+                        <label htmlFor="implementationPlan-input" className="block text-sm font-medium text-gray-700 w-1/4">
                             Implementation Plan
                         </label>
                         <textarea
@@ -118,11 +120,12 @@ const IdeaForm = (props) => {
                             id="implementationPlan-input"
                             value={formData.implementationPlan}
                             onChange={handleChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            rows="4"
+                            className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="anonymity-input" className="block text-sm font-medium text-gray-700">
+                    <div className="flex items-start">
+                        <label htmlFor="anonymity-input" className="block text-sm font-medium text-gray-700 w-1/4">
                             Anonymity
                         </label>
                         <select
@@ -131,7 +134,7 @@ const IdeaForm = (props) => {
                             id="anonymity-input"
                             value={formData.anonymity}
                             onChange={handleChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="mt-1 block w-3/4 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
                             <option value="Non-Anonymous">Non-Anonymous</option>
                             <option value="Anonymous">Anonymous</option>
