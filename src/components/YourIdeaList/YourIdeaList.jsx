@@ -8,7 +8,7 @@ const YourIdeaList = ({ ideas }) => {
     console.log(ideas,user)
 
     const bgColors = [
-        "bg-pink-200 hover:bg-pink-300",
+        "bg-violet-100 hover:bg-violet-300",
     ];
 
     const yourIdeas = ideas.filter((idea) => idea?.author?._id === user?._id);

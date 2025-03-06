@@ -33,11 +33,11 @@ const ReactionForm = (props) => {
                     onChange={handleChange}
                     className="border border-gray-400 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" // Solid border
                 >
-                    <option value='Like'>Like</option>
-                    <option value='Dislike'>Dislike</option>
+                    <option value='Like'>Like ❤️️</option>
+                    <option value='Dislike'>Dislike👎</option>
                 </select>
             </div>
-            <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full border border-blue-600"> {/* Solid button border */}
+            <button type='submit' className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full border border-lime-600"> {/* Solid button border */}
                 SUBMIT
             </button>
         </form>

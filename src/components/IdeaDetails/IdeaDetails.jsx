@@ -62,13 +62,13 @@ const IdeaDetails = (props) => {
                         <div className="flex space-x-2">
                             <Link
                                 to={`/ideas/${ideaId}/edit`}
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full"
                             >
                                 Edit Idea
                             </Link>
                             <button
                                 onClick={() => props.handleDeleteIdea(idea._id)}
-                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                className="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
                             >
                                 Delete Idea
                             </button>
@@ -88,7 +88,7 @@ const IdeaDetails = (props) => {
                                 {`${reaction?.author?.username} posted on ${new Date(reaction?.createdAt).toLocaleDateString()}`}
                             </p>
                         </header>
-                        <p>{reaction?.type}</p>
+                        <p>{reaction?.type ==="Like" ? `❤️️`:`👎`}</p>
                     </article>
                 ))}
             </section>
