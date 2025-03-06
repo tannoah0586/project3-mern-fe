@@ -12,6 +12,7 @@ import { UserContext } from './contexts/UserContext';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import CommentForm from './components/CommentForm/CommentForm';
+import YourIdeaList from './components/YourIdeaList/YourIdeaList';
 
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
@@ -55,13 +56,14 @@ const App =()=> {
           <>
           {/* protected routes */}
             <Route path='/ideas' element ={<IdeaList ideas={ideas} />}/>
+            <Route path='/yourideas' element ={<YourIdeaList ideas={ideas} />}/>
             <Route path='ideas/:ideaId' element ={<IdeaDetails handleDeleteIdea = {handleDeleteIdea} />}/>
             <Route path='/ideas/new' element = {<IdeaForm handleAddIdea ={handleAddIdea} />}/>
             <Route
               path='/ideas/:ideaId/edit'
               element={<IdeaForm handleUpdateIdea={handleUpdateIdea}/>}
               />
-          <Route 
+            <Route 
               path='/ideas/:ideaId/comments'
               element={<CommentForm />}
              /> 
