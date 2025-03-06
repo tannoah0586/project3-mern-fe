@@ -42,7 +42,7 @@ const IdeaDetails = (props) => {
         <main className="pt-20 p-4 max-w-4xl mx-auto">
             <article className="bg-white rounded-lg shadow-md p-6 mb-8">
                 <header className="mb-4 flex justify-between items-center">
-                    <div className="text-center w-full"> {/* Centered username/date */}
+                    <div className="text-center w-full">
                         <h1 className="text-2xl font-bold mb-2">{idea?.title?.toUpperCase()}</h1>
                         <p className="text-sm text-gray-600">
                             {idea?.anonymity === "Non-Anonymous"
@@ -58,25 +58,27 @@ const IdeaDetails = (props) => {
                     <p><strong>Implementation Plan:</strong> {idea?.implementationPlan}</p>
                 </div>
                 {idea?.author?._id === user?._id && (
-                    <div className="mt-4 flex space-x-2">
-                        <Link
-                            to={`/ideas/${ideaId}/edit`}
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" 
-                        >
-                            Edit Idea
-                        </Link>
-                        <button
-                            onClick={() => props.handleDeleteIdea(idea._id)}
-                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" 
-                        >
-                            Delete Idea
-                        </button>
+                    <div className="mt-4 flex justify-center">
+                        <div className="flex space-x-2">
+                            <Link
+                                to={`/ideas/${ideaId}/edit`}
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                            >
+                                Edit Idea
+                            </Link>
+                            <button
+                                onClick={() => props.handleDeleteIdea(idea._id)}
+                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                            >
+                                Delete Idea
+                            </button>
+                        </div>
                     </div>
                 )}
             </article>
 
             <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-                <h2 className="text-xl font-bold mb-4 text-center">Reactions</h2> {/* Centered Reactions title */}
+                <h2 className="text-xl font-bold mb-4 text-center">Reactions</h2>
                 <ReactionForm handleAddReaction={handleAddReaction} />
                 {!(idea?.reactions?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
                 {idea?.reactions?.map((reaction) => (
@@ -92,7 +94,7 @@ const IdeaDetails = (props) => {
             </section>
 
             <section className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold mb-4 text-center">Comments</h2> {/* Centered Comments title */}
+                <h2 className="text-xl font-bold mb-4 text-center">Comments</h2>
                 <CommentForm handleAddComment={handleAddComment} />
                 {!(idea?.comments?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
                 {idea?.comments?.map((comment) => (
@@ -106,19 +108,21 @@ const IdeaDetails = (props) => {
                         </header>
                         <p>{comment?.text}</p>
                         {comment?.author?._id === user?._id && (
-                            <div className="mt-2 flex space-x-2">
-                                <Link
-                                    to={`/ideas/${ideaId}/comments/${comment._id}/edit`}
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" 
-                                >
-                                    Edit Comment
-                                </Link>
-                                <button
-                                    onClick={() => handleDeleteComment(comment._id)}
-                                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" 
-                                >
-                                    Delete Comment
-                                </button>
+                            <div className="mt-2 flex justify-center"> {/* Centering div */}
+                                <div className="flex space-x-2"> {/* Button container */}
+                                    <Link
+                                        to={`/ideas/${ideaId}/comments/${comment._id}/edit`}
+                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                    >
+                                        Edit Comment
+                                    </Link>
+                                    <button
+                                        onClick={() => handleDeleteComment(comment._id)}
+                                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                    >
+                                        Delete Comment
+                                    </button>
+                                </div>
                             </div>
                         )}
                     </article>
