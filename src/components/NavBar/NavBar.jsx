@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import User from '../../assets/user.svg';
+import Idea from '../../assets/idea-bulb.svg'
 
 const NavBar = () => {
     const { user, setUser } = useContext(UserContext);
@@ -11,7 +13,7 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="fixed w-full z-50"> {/* Added fixed, w-full, z-50*/}
+        <nav className="fixed w-full z-50">
             {user ? (
                 <div className="navbar bg-base-100 shadow-sm">
                     <div className="navbar-start">
@@ -31,25 +33,24 @@ const NavBar = () => {
                                 <li><Link to="/yourIdeas" className="hover:bg-gray-200 block py-2 px-4 rounded">Your Ideas</Link></li>
                             </ul>
                         </div>
-                        <Link to="/" className="btn btn-ghost text-2xl">Idea Incubator</Link>
+                        <Link to="/" className="btn btn-ghost text-2xl">
+                        <img src={Idea} alt="Idea Logo" className="h-6 w-6 mr-2" />
+                        Idea Incubator</Link>
                     </div>
 
                     <div className="flex space-x-4 items-center">
-                        {/* <Link to="/ideas/new" className="btn btn-sm bg-blue-500 text-white hover:bg-blue-600">
-                            + Share a new idea
-                        </Link> */}
-                        <Link to="/" className="btn btn-sm">Home</Link>
-                        <Link to="/ideas" className="btn btn-sm">All ideas</Link>
-                        <Link to="/yourideas" className="btn btn-sm">Your Ideas</Link>
+                        <Link to="/" className="btn btn-ghost">Home</Link>
+                        <Link to="/ideas" className="btn btn-ghost">All ideas</Link>
+                        <Link to="/yourideas" className="btn btn-ghost">Your Ideas</Link>
                     </div>
 
                     <div className="navbar-end flex items-center space-x-4">
-                        <img src='https://cdn.creazilla.com/icons/3251108/person-icon-md.png' alt='icon' width='20' height='20' />
+                        <img src={User} alt='icon' className='h-5 w-5' />
                         <span className="btn btn-ghost">{user.username}</span>
                         <Link
                             to="/"
                             onClick={handleSignOut}
-                            className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]"
+                            className="btn rounded-full bg-[#5EBB2B] text-white border-[#4eaa0c]"
                         >
                             Sign out
                         </Link>
@@ -58,12 +59,15 @@ const NavBar = () => {
             ) : (
                 <div className="navbar bg-base-100 shadow-sm">
                     <div className="navbar-start">
-                        <Link to="/" className="btn btn-ghost text-2xl">Idea Incubator</Link>
+                        <Link to="/" className="btn btn-ghost text-2xl">
+                        <img src={Idea} alt="Idea Logo" className="h-6 w-6 mr-2" />
+                        Idea Incubator
+                        </Link>
                     </div>
 
                     <div className="navbar-end">
                         <Link to="/sign-in" className="btn btn-ghost">Log in</Link>
-                        <Link to="/sign-up" className="btn bg-[#5EBB2B] text-white border-[#4eaa0c]">Sign up</Link>
+                        <Link to="/sign-up" className="btn rounded-full bg-[#5EBB2B] text-white border-[#4eaa0c]">Sign up</Link> {/* Changed to rounded-full */}
                     </div>
                 </div>
             )}
