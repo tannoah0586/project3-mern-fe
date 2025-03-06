@@ -17,30 +17,31 @@ const Dashboard = ({ ideas }) => {
             <div className="fixed top-25 left-1/2 -translate-x-1/2 z-40">
                 <Link
                     to="/ideas/new"
-                    className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
+                    className="py-3 px-6 text-lg font-bold rounded-full text-white bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
                 >
                     + Share a new idea
                 </Link>
             </div>
             <div className="w-3/3 mx-auto h-0.5 bg-gradient-to-r from-transparent via-lime-400 to-transparent my-6"></div>
-            <h1>Welcome, {user.username}</h1>
+            <h1>Welcome, <span className="font-bold">{user.username}</span></h1>
             <p>This is the dashboard page where you can see a list of all ideas sorted by their popularity</p>
             <br />
-            <h1>Top Ideas</h1>
-            <div className="flex flex-row space-x-6 overflow-x-auto">
+            <h1 className="text-2xl font-bold mt-8">Top Ideas</h1>
+            <div className="flex flex-row space-x-6 overflow-x-auto mt-8">
                 {ideas
                     .map((idea) => ({
                         ...idea,
                         likesCount: idea.reactions.filter((reaction) => reaction.type === "Like").length,
                     }))
                     .sort((a, b) => b.likesCount - a.likesCount)
+                    .slice(0, 6)
                     .map((idea, index) => {
                         const bgColor = bgColors[index % bgColors.length];
                         return (
                             <Link
                                 to={`/ideas/${idea._id}`}
                                 key={idea._id}
-                                className={`block ${bgColor} text-black p-6 rounded-xl shadow-md transition duration-200 min-w-[250px]`}
+                                className={`block ${bgColor} text-black p-6 rounded-xl shadow-md transition duration-200 w-[250px] min-h-[250px] flex flex-col justify-between`} // Added w-[250px]
                             >
                                 <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-wrap text-ellipsis">
                                     {idea.title}
