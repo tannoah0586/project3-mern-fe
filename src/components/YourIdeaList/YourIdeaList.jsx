@@ -21,8 +21,8 @@ const YourIdeaList = ({ ideas }) => {
             <div className="fixed top-27 left-1/2 -translate-x-1/2 z-40"> {/* Changed top-25 to top-32 */}
                 <Link
                     to="/ideas/new"
-                    className="py-3 px-6 text-lg font-bold rounded-full text-white bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
-                >
+                    className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
+                    >
                     + Share a new idea
                 </Link>
             </div>
