@@ -40,7 +40,7 @@ const NavBar = () => {
 
                     <div className="flex space-x-4 items-center">
                         <Link to="/" className="btn btn-ghost">Home</Link>
-                        <Link to="/ideas" className="btn btn-ghost">All ideas</Link>
+                        <Link to="/ideas" className="btn btn-ghost">All Ideas</Link>
                         <Link to="/yourideas" className="btn btn-ghost">Your Ideas</Link>
                     </div>
 

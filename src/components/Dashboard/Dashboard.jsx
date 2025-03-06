@@ -14,7 +14,7 @@ const Dashboard = ({ ideas }) => {
 
     return (
         <main className="pt-40 p-4">
-            <div className="fixed top-25 left-1/2 -translate-x-1/2 z-40">
+            <div className="fixed top-27 left-1/2 -translate-x-1/2 z-40"> {/* Changed top-25 to top-32 */}
                 <Link
                     to="/ideas/new"
                     className="py-3 px-6 text-lg font-bold rounded-full text-white bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
@@ -26,7 +26,7 @@ const Dashboard = ({ ideas }) => {
             <h1>Welcome, <span className="font-bold">{user.username}</span></h1>
             <p>This is the dashboard page where you can see a list of all ideas sorted by their popularity</p>
             <br />
-            <div className="pl-8"> {/* Added pl-8 to the container */}
+            <div className="pl-8">
                 <h1 className="text-2xl font-bold mt-8">Top Ideas</h1>
                 <div className="flex flex-row space-x-6 overflow-x-auto mt-8">
                     {ideas
