@@ -6,11 +6,10 @@ const Dashboard = ({ ideas }) => {
     const { user } = useContext(UserContext);
 
     const bgColors = [
-        "bg-pink-200 hover:bg-pink-300",
-        "bg-blue-200 hover:bg-blue-300",
-        "bg-green-200 hover:bg-green-300",
-        "bg-yellow-200 hover:bg-yellow-300",
-        "bg-purple-200 hover:bg-purple-300",
+        "bg-red-100 hover:bg-rose-200",
+        "bg-lime-100 hover:bg-lime-400",
+        "bg-yellow-100 hover:bg-amber-200",
+        "bg-rose-200 hover:bg-red-300",
     ];
 
     return (
@@ -18,12 +17,12 @@ const Dashboard = ({ ideas }) => {
             <div className="fixed top-25 left-1/2 -translate-x-1/2 z-40">
                 <Link
                     to="/ideas/new"
-                    className="py-3 px-6 text-lg rounded-full text-white bg-gradient-to-b from-pink-400 to-green-400 hover:from-pink-500 hover:to-green-500"
+                    className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
                 >
                     + Share a new idea
                 </Link>
             </div>
-            <div className="w-3/3 mx-auto h-0.5 bg-gradient-to-r from-transparent via-green-200 to-transparent my-6"></div>
+            <div className="w-3/3 mx-auto h-0.5 bg-gradient-to-r from-transparent via-lime-400 to-transparent my-6"></div>
             <h1>Welcome, {user.username}</h1>
             <p>This is the dashboard page where you can see a list of all ideas sorted by their popularity</p>
             <br />
@@ -43,7 +42,7 @@ const Dashboard = ({ ideas }) => {
                                 key={idea._id}
                                 className={`block ${bgColor} text-black p-6 rounded-xl shadow-md transition duration-200 min-w-[250px]`}
                             >
-                                <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-nowrap text-ellipsis">
+                                <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-wrap text-ellipsis">
                                     {idea.title}
                                 </h3>
                                 <p className="text-sm text-gray-700 mb-1">{idea.likesCount} Likes</p>
