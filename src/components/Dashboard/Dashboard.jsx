@@ -6,10 +6,11 @@ const Dashboard = ({ ideas }) => {
     const { user } = useContext(UserContext);
 
     const bgColors = [
-        "bg-red-100 hover:bg-rose-200",
-        "bg-lime-100 hover:bg-lime-400",
+        "bg-violet-100 hover:violet-400",
+        "bg-lime-100 hover:bg-lime-300",
         "bg-yellow-100 hover:bg-amber-200",
-        "bg-rose-200 hover:bg-red-300",
+        "bg-purple-100 hover:bg-purple-300",
+   
     ];
 
     return (
@@ -17,7 +18,7 @@ const Dashboard = ({ ideas }) => {
             <div className="fixed top-25 left-1/2 -translate-x-1/2 z-40">
                 <Link
                     to="/ideas/new"
-                    className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-rose-300 to-lime-400 hover:from-rose-400 hover:to-lime-600"
+                    className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
                 >
                     + Share a new idea
                 </Link>
