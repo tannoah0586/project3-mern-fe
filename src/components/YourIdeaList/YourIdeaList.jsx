@@ -39,7 +39,7 @@ const YourIdeaList = ({ ideas }) => {
                                 key={idea?._id}
                                 className={`block ${bgColor} text-black p-6 rounded-xl shadow-md transition duration-200 w-[250px] min-h-[250px] flex flex-col justify-between`} // Adjusted width to match "All Ideas" component
                             >
-                                <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-nowrap text-ellipsis">
+                                <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-wrap text-ellipsis">
                                     {idea?.title}
                                 </h3>
                                 <p className="text-sm text-gray-700 mb-1">
