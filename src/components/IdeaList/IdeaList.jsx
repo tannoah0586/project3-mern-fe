@@ -31,7 +31,7 @@ const IdeaList = ({ ideas }) => {
                 <hr className="w-full mx-auto border-lime-400 border-2 my-6" />
                 <div className="pt-32">
                   <div className="w-3/3 mx-auto h-0.5 bg-gradient-to-r from-transparent via-lime-400 to-transparent my-6"></div>
-                    <h1 className="text-2xl font-bold mb-6 text-center">All Ideas</h1>
+                    <h1 className="text-3xl font-bold mb-6 text-center">All Ideas</h1>
                     <div className="grid grid-cols-5 gap-8"> {/* Changed gap-5 to gap-8 */}
                         {ideas?.map((idea, index) => {
                             const likesCount = idea?.reactions?.filter((reaction) => reaction.type === "Like").length || 0;
