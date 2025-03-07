@@ -85,7 +85,7 @@ const IdeaDetails = (props) => {
             </article>
 
             <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-                <img src={voting} alt="Voting & Prioritization" className="mx-auto h-14 mb-4" />
+                <img src={voting} alt="Voting & Prioritization" className="mx-auto h-14 " />
                 <h2 className="text-xl font-bold mb-4 text-center">Votes</h2>
 
                 <ReactionForm handleAddReaction={handleAddReaction} />
@@ -103,7 +103,7 @@ const IdeaDetails = (props) => {
             </section>
 
             <section className="bg-white rounded-lg shadow-md p-5">
-                <img src={feedback} alt="Feedback Collection" className="mx-auto h-10 mb-4" />
+                <img src={feedback} alt="Feedback Collection" className="mx-auto h-10 mb-2" />
                 <h2 className="text-xl font-bold mb-4 text-center">Comments</h2>
                 <CommentForm handleAddComment={handleAddComment} />
                 {!(idea?.comments?.length > 0) && <p className="mt-4 text-gray-500">There are no comments.</p>}

@@ -21,14 +21,14 @@ const IdeaList = ({ ideas }) => {
                  
                         <Link
                             to="/ideas/new"
-                            className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
+                            className="py-3 px-6 text-lg rounded-full text-white font-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
                         >
                             + Share a new idea
                         </Link>
                     )}
                 </div>
                 
-                <hr className="w-full mx-auto border-lime-400 border-2 my-6" />
+                <hr className="w-full mx-auto border-lime-400 border-2" />
                 <div className="pt-32">
                   <div className="w-3/3 mx-auto h-0.5 bg-gradient-to-r from-transparent via-lime-400 to-transparent my-6"></div>
                     <h1 className="text-3xl font-bold mb-6 text-center">All Ideas</h1>
