@@ -122,13 +122,13 @@ const IdeaDetails = (props) => {
                                 <div className="flex space-x-2">
                                     <Link
                                         to={`/ideas/${ideaId}/comments/${comment._id}/edit`}
-                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                        className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full"
                                     >
                                         Edit Comment
                                     </Link>
                                     <button
                                         onClick={() => handleDeleteComment(comment._id)}
-                                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                        className="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
                                     >
                                         Delete Comment
                                     </button>

@@ -18,7 +18,7 @@ const Dashboard = ({ ideas }) => {
             <div className="fixed top-27 left-1/2 -translate-x-1/2 z-40">
                 <Link
                     to="/ideas/new"
-                    className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
+                    className="py-3 px-6 text-lg rounded-full text-white font-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
                     >
                     + Share a new idea
                 </Link>
@@ -29,16 +29,16 @@ const Dashboard = ({ ideas }) => {
                 <p>This is the dashboard page where you can see a list of all ideas sorted by their popularity</p>
             </div>
             <br />
-            <div className="pl-27">
+            <div className="mx-auto w-fit"> {/* Added container div with mx-auto and w-fit */}
                 <h1 className="text-3xl font-bold mt-8 text-center">Top Ideas</h1>
-                <div className="flex flex-row space-x-6 overflow-x-auto mt-8">
+                <div className="flex flex-row space-x-6 overflow-x-auto mt-8 justify-center"> {/* Added justify-center */}
                     {ideas
                         .map((idea) => ({
                             ...idea,
                             likesCount: idea.reactions.filter((reaction) => reaction.type === "Like").length,
                         }))
                         .sort((a, b) => b.likesCount - a.likesCount)
-                        .slice(0, 6)
+                        .slice(0, 5)
                         .map((idea, index) => {
                             const bgColor = bgColors[index % bgColors.length];
                             return (
@@ -54,7 +54,7 @@ const Dashboard = ({ ideas }) => {
                                     <p className="text-sm text-gray-700 mb-3">{idea.comments.length} Comments</p>
                                     <div className="border-t border-gray-300 pt-3 text-sm text-gray-600 flex flex-col items-center">
                                         <span className="flex items-center gap-1">
-                                            <img src={User} alt='icon' className='h-8 p-1' /> {/* Replaced <span> with <img> */}
+                                            <img src={User} alt='icon' className='h-8 p-1' />
                                             {idea.anonymity === "Non-Anonymous" ? idea.author.username : "Anonymous"}
                                         </span>
                                         <span className="text-xs mt-1">
