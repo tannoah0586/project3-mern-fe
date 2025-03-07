@@ -18,7 +18,7 @@ const Landing = () => {
 
                   </div>
               <div className="max-w-3xl mx-auto">
-                  <h1 className="text-4xl text-green-600 mb-4">Ideas <a className="text-4xl font-bold mb-4">Incubator</a></h1>
+                  <h1 className="text-4xl text-green-600 mb-4">Ideas <span className="text-4xl font-bold mb-4">Incubator</span></h1>
 
                   <h1 className="text-4xl font-bold mb-4"></h1>
                   {/* <p className="text-lg text-gray-700 mb-8">
