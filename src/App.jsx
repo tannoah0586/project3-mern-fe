@@ -54,7 +54,7 @@ const App =()=> {
   return(
     <>
       <NavBar />
-      <title>Idea Incubator</title>
+      <title>Ideas Incubator</title>
       <Routes>
         <Route path='/' element= {user ? <Dashboard ideas={ideas}/> :<Landing />}/>
         {user? ( 
