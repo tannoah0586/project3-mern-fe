@@ -6,11 +6,11 @@ const Dashboard = ({ ideas }) => {
     const { user } = useContext(UserContext);
 
     const bgColors = [
-        "bg-red-100 hover:bg-rose-200",
-        "bg-lime-100 hover:bg-lime-400",
-        "bg-yellow-100 hover:bg-amber-200",
-        "bg-rose-200 hover:bg-red-300",
-    ];
+      "bg-violet-100 hover:violet-400",
+      "bg-lime-100 hover:bg-lime-300",
+      "bg-yellow-100 hover:bg-amber-200",
+      "bg-purple-50 hover:bg-purple-300",
+  ];
 
     return (
         <main className="pt-40 p-4">
