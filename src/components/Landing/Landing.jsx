@@ -5,6 +5,7 @@ import feedback from '../../assets/feedback.svg';
 import voting from '../../assets/voteinfo.svg';
 import man from '../../assets/man.svg';
 import woman from '../../assets/woman.svg';
+import { Link } from 'react-router-dom'
 
 
 const Landing = () => {
@@ -28,9 +29,11 @@ const Landing = () => {
 
                        Fostering a culture of innovation and collaboration.
                   </p>
+                  <Link to="/sign-up">
                   <button className="py-3 px-6 text-lg rounded-full text-white font-bold bg-gradient-to-b from-violet-300 to-lime-300 hover:from-violet-400 hover:to-lime-600">
                       Get Started
                   </button>
+                  </Link>
               </div>
           </section>
 

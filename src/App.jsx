@@ -13,6 +13,7 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import CommentForm from './components/CommentForm/CommentForm';
 import YourIdeaList from './components/YourIdeaList/YourIdeaList';
+import Idea from './assets/green-bulb1.svg'
 
 const App =()=> {
   const [ideas,setIdeas] = useState([]);
@@ -47,9 +48,11 @@ const App =()=> {
 
   
 
+  
   return(
     <>
       <NavBar />
+      <title>Idea Incubator</title>
       <Routes>
         <Route path='/' element= {user ? <Dashboard ideas={ideas}/> :<Landing />}/>
         {user? ( 
