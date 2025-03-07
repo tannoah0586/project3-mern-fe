@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
+import User from '../../assets/user.svg';
 
 const Dashboard = ({ ideas }) => {
     const { user } = useContext(UserContext);
@@ -28,7 +29,7 @@ const Dashboard = ({ ideas }) => {
                 <p>This is the dashboard page where you can see a list of all ideas sorted by their popularity</p>
             </div>
             <br />
-            <div className="pl-27"> 
+            <div className="pl-27">
                 <h1 className="text-3xl font-bold mt-8 text-center">Top Ideas</h1>
                 <div className="flex flex-row space-x-6 overflow-x-auto mt-8">
                     {ideas
@@ -53,7 +54,7 @@ const Dashboard = ({ ideas }) => {
                                     <p className="text-sm text-gray-700 mb-3">{idea.comments.length} Comments</p>
                                     <div className="border-t border-gray-300 pt-3 text-sm text-gray-600 flex flex-col items-center">
                                         <span className="flex items-center gap-1">
-                                            <span className="text-base">👤</span>
+                                            <img src={User} alt='icon' className='h-8 p-1' /> {/* Replaced <span> with <img> */}
                                             {idea.anonymity === "Non-Anonymous" ? idea.author.username : "Anonymous"}
                                         </span>
                                         <span className="text-xs mt-1">
