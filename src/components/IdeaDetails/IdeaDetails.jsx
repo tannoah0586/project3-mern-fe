@@ -16,11 +16,13 @@ const IdeaDetails = (props) => {
     const handleAddComment = async (commentFormData) => {
         const newComment = await ideaService.createComment(ideaId, commentFormData);
         setIdea({ ...idea, comments: [...(idea?.comments || []), newComment] });
+
     };
 
     const handleAddReaction = async (reactionFormData) => {
         const newReaction = await ideaService.createReaction(ideaId, reactionFormData);
         setIdea({ ...idea, reactions: [...(idea?.reactions || []), newReaction] });
+        navigate('/ideas');
     };
 
     const handleDeleteComment = async (commentId) => {

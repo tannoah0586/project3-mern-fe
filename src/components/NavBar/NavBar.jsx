@@ -19,7 +19,7 @@ const NavBar = () => {
                     <div className="navbar-start">
                         <Link to="/" className="btn btn-ghost text-2xl">
                         <img src={Idea} alt="Idea Logo" className="h-10 mr-2" />
-                        <p className="text-2xl font-normal text-lime-600 mr-2">Ideas <a className="text-2xl font-bold  mr-2">Incubator</a></p>
+                        <p className="text-2xl font-normal text-lime-600 mr-2">Ideas <span className="text-2xl font-bold  mr-2">Incubator</span></p>
                         </Link>
                     </div>
                     <div className="flex space-x-4 items-center">

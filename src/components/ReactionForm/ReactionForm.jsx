@@ -6,6 +6,7 @@ const ReactionForm = (props) => {
     const [formData, setFormData] = useState({
         type: "Like", //default setting
     });
+    const [voted,setVoted] = useState(false)
 
     const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const ReactionForm = (props) => {
         evt.preventDefault();
         props.handleAddReaction(formData);
         navigate(`/ideas/${ideaId}`);
+        setVoted(true)
     };
 
     return (
@@ -33,8 +35,9 @@ const ReactionForm = (props) => {
                     onChange={handleChange}
                     className="border border-gray-400 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300" // Solid border
                 >
-                    <option value='Like'>Like ❤️️</option>
-                    <option value='Dislike'>Dislike👎</option>
+                    <p>{voted?'you have voted, cant voted again' : ``}</p>
+                        <option value='Like'>Like ❤️️</option>
+                    <option value='Dislike'>Dislike👎</option>          
                 </select>
             </div>
             <button type='submit' className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full border border-lime-600"> {/* Solid button border */}

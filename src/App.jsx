@@ -31,6 +31,8 @@ const App =()=> {
   const handleAddIdea = async (ideaFormData) => {
     const newIdea = await ideaService.create(ideaFormData);
     setIdeas([newIdea, ...ideas]);
+    const ideasData = await ideaService.index();
+    setIdeas(ideasData);
     navigate('/ideas');
   };
 
