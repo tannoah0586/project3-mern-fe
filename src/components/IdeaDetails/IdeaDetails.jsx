@@ -4,6 +4,10 @@ import CommentForm from "../CommentForm/CommentForm";
 import { UserContext } from "../../contexts/UserContext";
 import { useParams, Link } from "react-router-dom";
 import ReactionForm from "../ReactionForm/ReactionForm";
+import voting from '../../assets/voteinfo.svg';
+import feedback from '../../assets/feedback.svg';
+import User from '../../assets/user.svg';
+
 
 const IdeaDetails = (props) => {
     const [idea, setIdea] = useState(null);
@@ -44,11 +48,13 @@ const IdeaDetails = (props) => {
                 <header className="mb-4 flex justify-between items-center">
                     <div className="text-center w-full">
                         <h1 className="text-2xl font-bold mb-2">{idea?.title?.toUpperCase()}</h1>
-                        <p className="text-sm text-gray-600">
+                        <span className="flex items-center gap-1 ">
+                        <img src={User} alt='icon' className='flex items-center h-6' /><p className="text-sm text-gray-600 text-center">
                             {idea?.anonymity === "Non-Anonymous"
                                 ? `${idea?.author?.username} posted on ${new Date(idea?.createdAt).toLocaleDateString()}`
                                 : `Anonymous posted on ${new Date(idea?.createdAt).toLocaleDateString()}`}
                         </p>
+                        </span>
                     </div>
                 </header>
                 <div className="space-y-4">
@@ -62,13 +68,13 @@ const IdeaDetails = (props) => {
                         <div className="flex space-x-2">
                             <Link
                                 to={`/ideas/${ideaId}/edit`}
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full"
                             >
                                 Edit Idea
                             </Link>
                             <button
                                 onClick={() => props.handleDeleteIdea(idea._id)}
-                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                className="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
                             >
                                 Delete Idea
                             </button>
@@ -78,9 +84,11 @@ const IdeaDetails = (props) => {
             </article>
 
             <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-                <h2 className="text-xl font-bold mb-4 text-center">Reactions</h2>
+                <img src={voting} alt="Voting & Prioritization" className="mx-auto h-14 mb-4" />
+                <h2 className="text-xl font-bold mb-4 text-center">Votes</h2>
+
                 <ReactionForm handleAddReaction={handleAddReaction} />
-                {!(idea?.reactions?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
+                {!(idea?.reactions?.length > 0) && <p className="text-gray-500">There are no votes.</p>}
                 {idea?.reactions?.map((reaction) => (
                     <article key={reaction._id} className="border-t pt-4 mt-4">
                         <header className="mb-2">
@@ -88,15 +96,16 @@ const IdeaDetails = (props) => {
                                 {`${reaction?.author?.username} posted on ${new Date(reaction?.createdAt).toLocaleDateString()}`}
                             </p>
                         </header>
-                        <p>{reaction?.type}</p>
+                        <p>{reaction?.type ==="Like" ? `❤️️`:`👎`}</p>
                     </article>
                 ))}
             </section>
 
-            <section className="bg-white rounded-lg shadow-md p-6">
+            <section className="bg-white rounded-lg shadow-md p-5">
+                <img src={feedback} alt="Feedback Collection" className="mx-auto h-10 mb-4" />
                 <h2 className="text-xl font-bold mb-4 text-center">Comments</h2>
                 <CommentForm handleAddComment={handleAddComment} />
-                {!(idea?.comments?.length > 0) && <p className="text-gray-500">There are no comments.</p>}
+                {!(idea?.comments?.length > 0) && <p className="mt-4 text-gray-500">There are no comments.</p>}
                 {idea?.comments?.map((comment) => (
                     <article key={comment._id} className="border-t pt-4 mt-4">
                         <header className="mb-2">

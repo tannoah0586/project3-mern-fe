@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import User from '../../assets/user.svg';
+
 
 const YourIdeaList = ({ ideas }) => {
     
@@ -8,7 +10,7 @@ const YourIdeaList = ({ ideas }) => {
     console.log(ideas,user)
 
     const bgColors = [
-        "bg-pink-200 hover:bg-pink-300",
+        "bg-violet-100 hover:bg-violet-300",
     ];
 
     const yourIdeas = ideas.filter((idea) => idea?.author?._id === user?._id);
@@ -50,7 +52,7 @@ const YourIdeaList = ({ ideas }) => {
                             </p>
                             <div className="border-t border-gray-300 pt-3 text-sm text-gray-600 flex flex-col items-center">
                                 <span className="flex items-center gap-1">
-                                    <span className="text-base">👤</span>
+                                    <img src={User} alt='icon' className='h-8 p-1' />
                                     {idea?.anonymity === "Non-Anonymous" ? idea?.author?.username : "Anonymous"}
                                 </span>
                                 <span className="text-xs mt-1">

@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
+import User from '../../assets/user.svg';
+
 
 const Dashboard = ({ ideas }) => {
     const { user } = useContext(UserContext);
@@ -9,7 +11,7 @@ const Dashboard = ({ ideas }) => {
       "bg-violet-100 hover:violet-400",
       "bg-lime-100 hover:bg-lime-300",
       "bg-yellow-100 hover:bg-amber-200",
-      "bg-purple-100 hover:bg-purple-300",
+      "bg-purple-50 hover:bg-purple-300",
   ];
 
     return (
@@ -31,7 +33,7 @@ const Dashboard = ({ ideas }) => {
                 <div className="fixed top-27 right-4 z-40"> {/* Changed left-1/2 to right-4 */}
                     <Link
                         to="/ideas/new"
-                        className="py-3 px-6 text-lg rounded-full text-white text-bold bg-gradient-to-b from-violet-200 to-lime-300 hover:from-violet-400 hover:to-lime-600"
+                        className="py-3 px-6 text-lg rounded-full text-white font-bold bg-gradient-to-b from-violet-300 to-lime-300 hover:from-violet-400 hover:to-lime-600"
                     >
                         + Share a new idea
                     </Link>
@@ -58,11 +60,11 @@ const Dashboard = ({ ideas }) => {
                                         <h3 className="font-bold text-lg mb-2 overflow-hidden whitespace-wrap text-ellipsis">
                                             {idea.title}
                                         </h3>
-                                        <p className="text-sm text-gray-700 mb-1">{idea.likesCount} Likes</p>
+                                        <p className="text-sm text-gray-700 mb-1">{idea.likesCount} Likes </p>
                                         <p className="text-sm text-gray-700 mb-3">{idea.comments.length} Comments</p>
                                         <div className="border-t border-gray-300 pt-3 text-sm text-gray-600 flex flex-col items-center">
                                             <span className="flex items-center gap-1">
-                                                <span className="text-base">👤</span>
+                                                <img src={User} alt='icon' className='h-5' />
                                                 {idea.anonymity === "Non-Anonymous" ? idea.author.username : "Anonymous"}
                                             </span>
                                             <span className="text-xs mt-1">

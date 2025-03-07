@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import User from '../../assets/user.svg';
+
 
 const IdeaList = ({ ideas }) => {
     const bgColors = [
-        "bg-pink-200 hover:bg-pink-300",
-        "bg-blue-200 hover:bg-blue-300",
-        "bg-green-200 hover:bg-green-300",
-        "bg-yellow-200 hover:bg-yellow-300",
-        "bg-purple-200 hover:bg-purple-300",
+        "bg-violet-100 hover:violet-400",
+        "bg-lime-100 hover:bg-lime-300",
+        "bg-yellow-100 hover:bg-amber-200",
+        "bg-purple-50 hover:bg-purple-300",
     ];
 
     return (
@@ -33,7 +34,7 @@ const IdeaList = ({ ideas }) => {
                             </p>
                             <div className="border-t border-gray-300 pt-3 text-sm text-gray-600 flex flex-col items-center">
                                 <span className="flex items-center gap-1">
-                                    <span className="text-base">👤</span>
+                                    <img src={User} alt='icon' className='h-8 p-1' />
                                     {idea?.anonymity === "Non-Anonymous" ? idea?.author?.username : "Anonymous"}
                                 </span>
                                 <span className="text-xs mt-1">
