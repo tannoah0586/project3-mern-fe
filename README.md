@@ -18,12 +18,12 @@ This Company Ideas Incubator Tool aims to foster a culture of innovation and col
 3. Voting & Prioritization- Identify top ideas through voting and prioritization.the updated information and any changes to design, timeline and upcoming engagement sessions.
 
 # UserStories 
-As a user I would like to sign up and create an account
-as a user I would like to log in securely 
-as a user I would like to post Ideas under my name
-as a user I would like to edit or delete my Idea
-as a user I would like to like other Ideas 
-as a user I would like to see the top liked Idea float to the top of the page (stretched goal)
+- As a user I would like to sign up and create an account
+- As a user I would like to log in securely 
+- As a user I would like to post Ideas under my name
+- As a user I would like to edit or delete my Idea
+- As a user I would like to like other Ideas 
+- As a user I would like to see the top liked Idea float to the top of the page (stretched goal)
 
 ## Wireframe
 ![image](https://github.com/user-attachments/assets/b8f9ac31-6165-47c2-af99-57330192a4c3)
