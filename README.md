@@ -70,5 +70,8 @@ Comments model
 - Strengths: Mastered Express CRUD operations and developed effective full-stack teamwork.
 - Weaknesses: Unclear initial data models and underestimated task complexity.
 
+## additional reflections 
+- familiarize with CRUD concepts and basic REACT components for backend + frontend deployment
+- communication and coordination played a big role, especially with time constraint and technical complexity 
 
 
