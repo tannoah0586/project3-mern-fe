@@ -2,7 +2,7 @@
 ![Screenshot 2025-03-07 at 6 54 44 PM](https://github.com/user-attachments/assets/1fe7e0ce-cc3e-489d-a14d-3e396e9a5c7c)
 
 ## Link to Site
-https://project-2-public-engagement-tool.vercel.app
+https://ideas-incubator.vercel.app
 
 ## Background
 In our diverse workplaces (corporate & public statboard), we've noticed a shift toward innovation-focused, consultative cultures. However, most companies still rely on annual innovation calls, creating engagement bottlenecks and limiting continuous collaboration.
